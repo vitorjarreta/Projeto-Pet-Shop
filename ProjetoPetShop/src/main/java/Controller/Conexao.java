@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class Conexao {
 
     private static final String HOST = "localhost:5432";
-    private static final String USUARIO = "postgree";
+    private static final String USUARIO = "postgres";
     private static final String SENHA = "123456";
     private static final String DATABASE = "PetShop";
 
@@ -16,7 +16,7 @@ public class Conexao {
     public static Connection conectar() {
         try {
             return DriverManager.getConnection(
-                    URL, USUARIO, DATABASE
+                    URL, USUARIO, SENHA
             );
         } catch (Exception e) {
             System.out.println("ERRO:" + e.getMessage());
