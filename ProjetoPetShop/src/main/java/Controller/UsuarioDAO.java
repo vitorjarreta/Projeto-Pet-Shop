@@ -17,7 +17,7 @@ public class UsuarioDAO {
     public boolean Logar(Usuario u) {
         try {
             String SQL = "select * from usuarios where"
-                    + "usuario_usuario=? and senha=md5(?)";
+                    + "usuario=? and senha=md5(?)";
 
             cmd = con.prepareStatement(SQL);
             cmd.setString(1, u.getUsuario());
@@ -41,7 +41,7 @@ public class UsuarioDAO {
 
     public boolean Cadastrar(Usuario u) {
         try {
-            String SQL = "Insert into usuario (ususario_usuario, senha_usuario)"
+            String SQL = "Insert into usuario (usuario, senha)"
                     + "values (?, md5(?))";
 
             cmd = con.prepareStatement(SQL);
