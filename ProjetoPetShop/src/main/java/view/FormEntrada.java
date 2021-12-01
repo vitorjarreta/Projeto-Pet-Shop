@@ -28,9 +28,10 @@ public class FormEntrada extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         nomepetshop = new javax.swing.JLabel();
-        irlogin = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        bt_fechar = new javax.swing.JButton();
+        bt_ircadastro = new javax.swing.JButton();
+        bt_irlogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,15 +42,33 @@ public class FormEntrada extends javax.swing.JFrame {
         nomepetshop.setForeground(new java.awt.Color(255, 255, 0));
         nomepetshop.setText("Pet Shop Bicho Sacana");
 
-        irlogin.setFont(new java.awt.Font("Ravie", 1, 18)); // NOI18N
-        irlogin.setForeground(new java.awt.Color(255, 255, 0));
-        irlogin.setText("Login");
+        bt_fechar.setBackground(new java.awt.Color(0, 0, 255));
+        bt_fechar.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_fechar.setForeground(new java.awt.Color(255, 255, 0));
+        bt_fechar.setText("Sair");
+        bt_fechar.setBorder(null);
 
-        jLabel1.setFont(new java.awt.Font("Ravie", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("Cadastrar");
+        bt_ircadastro.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ircadastro.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_ircadastro.setForeground(new java.awt.Color(255, 255, 0));
+        bt_ircadastro.setText("Cadastrar");
+        bt_ircadastro.setBorder(null);
+        bt_ircadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ircadastroActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\felipe.guerrera\\Desktop\\d7258aa1-ccd6-4718-9192-f01d1096eae4 (1).png")); // NOI18N
+        bt_irlogar.setBackground(new java.awt.Color(0, 0, 255));
+        bt_irlogar.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_irlogar.setForeground(new java.awt.Color(255, 255, 0));
+        bt_irlogar.setText("Logar");
+        bt_irlogar.setBorder(null);
+        bt_irlogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_irlogarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,11 +84,14 @@ public class FormEntrada extends javax.swing.JFrame {
                         .addGap(147, 147, 147)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(irlogin))
+                        .addContainerGap()
+                        .addComponent(bt_fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jLabel1)))
+                        .addGap(195, 195, 195)
+                        .addComponent(bt_ircadastro))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(bt_irlogar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -79,11 +101,13 @@ public class FormEntrada extends javax.swing.JFrame {
                 .addComponent(nomepetshop)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(irlogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(bt_irlogar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(bt_ircadastro)
+                .addGap(87, 87, 87)
+                .addComponent(bt_fechar)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,11 +118,21 @@ public class FormEntrada extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_irlogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_irlogarActionPerformed
+        FormLogin fun = new FormLogin();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_irlogarActionPerformed
+
+    private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
+        FormCadastro fun = new FormCadastro();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_ircadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,8 +170,9 @@ public class FormEntrada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel irlogin;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bt_fechar;
+    private javax.swing.JButton bt_ircadastro;
+    private javax.swing.JButton bt_irlogar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nomepetshop;

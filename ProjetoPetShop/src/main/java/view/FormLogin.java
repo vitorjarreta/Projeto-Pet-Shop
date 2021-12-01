@@ -26,8 +26,21 @@ public class FormLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_usuario = new javax.swing.JTextField();
+        txt_senha = new javax.swing.JTextField();
+        bt_entrar = new javax.swing.JButton();
+        bt_ircadastro = new javax.swing.JButton();
+        bt_voltarentrada = new javax.swing.JButton();
+        bt_fechar = new javax.swing.JButton();
+
+        jLabel3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setText("Sair");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,13 +50,76 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Logar na Plataforma");
 
+        jLabel5.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel5.setText("Usuário:");
+
+        jLabel6.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel6.setText("Senha:");
+
+        bt_entrar.setBackground(new java.awt.Color(0, 0, 255));
+        bt_entrar.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_entrar.setForeground(new java.awt.Color(255, 255, 0));
+        bt_entrar.setText("Entrar");
+        bt_entrar.setBorder(null);
+        bt_entrar.setBorderPainted(false);
+        bt_entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_entrarActionPerformed(evt);
+            }
+        });
+
+        bt_ircadastro.setBackground(new java.awt.Color(0, 0, 255));
+        bt_ircadastro.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_ircadastro.setForeground(new java.awt.Color(255, 255, 0));
+        bt_ircadastro.setText("Ir para Cadastro");
+        bt_ircadastro.setBorder(null);
+        bt_ircadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ircadastroActionPerformed(evt);
+            }
+        });
+
+        bt_voltarentrada.setBackground(new java.awt.Color(0, 0, 255));
+        bt_voltarentrada.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_voltarentrada.setForeground(new java.awt.Color(255, 255, 0));
+        bt_voltarentrada.setText("Voltar");
+        bt_voltarentrada.setBorder(null);
+        bt_voltarentrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_voltarentradaActionPerformed(evt);
+            }
+        });
+
+        bt_fechar.setBackground(new java.awt.Color(0, 0, 255));
+        bt_fechar.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_fechar.setForeground(new java.awt.Color(255, 255, 0));
+        bt_fechar.setText("Sair");
+        bt_fechar.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bt_fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(bt_ircadastro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_voltarentrada, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_usuario)
+                        .addComponent(txt_senha)))
                 .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
@@ -51,7 +127,22 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_entrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_ircadastro)
+                    .addComponent(bt_voltarentrada)
+                    .addComponent(bt_fechar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -67,6 +158,20 @@ public class FormLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_entrarActionPerformed
+        
+    }//GEN-LAST:event_bt_entrarActionPerformed
+
+    private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
+        FormCadastro fun = new FormCadastro();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_ircadastroActionPerformed
+
+    private void bt_voltarentradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarentradaActionPerformed
+        FormEntrada fun = new FormEntrada();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_voltarentradaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +209,16 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_entrar;
+    private javax.swing.JButton bt_fechar;
+    private javax.swing.JButton bt_ircadastro;
+    private javax.swing.JButton bt_voltarentrada;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txt_senha;
+    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
