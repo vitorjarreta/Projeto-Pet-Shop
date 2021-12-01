@@ -47,6 +47,11 @@ public class FormEntrada extends javax.swing.JFrame {
         bt_fechar.setForeground(new java.awt.Color(255, 255, 0));
         bt_fechar.setText("Sair");
         bt_fechar.setBorder(null);
+        bt_fechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_fecharActionPerformed(evt);
+            }
+        });
 
         bt_ircadastro.setBackground(new java.awt.Color(0, 0, 255));
         bt_ircadastro.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -133,6 +138,10 @@ public class FormEntrada extends javax.swing.JFrame {
         FormCadastro fun = new FormCadastro();
         fun.setVisible(true);
     }//GEN-LAST:event_bt_ircadastroActionPerformed
+
+    private void bt_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_bt_fecharActionPerformed
 
     /**
      * @param args the command line arguments

@@ -67,15 +67,13 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="78" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="bt_entrar" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <Component id="txt_usuario" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txt_senha" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Component id="txt_usuario" alignment="0" max="32767" attributes="0"/>
+                      <Component id="psw_senha" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               </Group>
@@ -93,7 +91,7 @@
                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_senha" min="-2" max="-2" attributes="0"/>
+                  <Component id="psw_senha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bt_entrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="145" max="32767" attributes="0"/>
@@ -142,8 +140,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_usuario">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txt_senha">
         </Component>
         <Component class="javax.swing.JButton" name="bt_entrar">
           <Properties>
@@ -222,6 +218,11 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_fecharActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="psw_senha">
         </Component>
       </SubComponents>
     </Container>
