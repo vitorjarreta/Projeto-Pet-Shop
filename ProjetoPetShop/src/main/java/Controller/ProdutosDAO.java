@@ -12,7 +12,7 @@ public class ProdutosDAO {
     private final Connection con;
     private PreparedStatement cmd;
     
-    public ProdutosDAO(Connection con) {
+    public ProdutosDAO() {
         this.con = Conexao.conectar();
     }
     

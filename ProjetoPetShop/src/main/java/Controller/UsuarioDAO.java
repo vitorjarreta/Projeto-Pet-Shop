@@ -10,18 +10,13 @@ public class UsuarioDAO {
     private final Connection con;
     private PreparedStatement cmd;
 
-    public UsuarioDAO(Connection con) {
-        this.con = Conexao.conectar();
-    }
-
     public UsuarioDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.con = Conexao.conectar();
     }
 
     public boolean Logar(Usuario u) {
         try {
-            String SQL = "select * from usuarios where"
-                    + "usuario=? and senha=md5(?)";
+            String SQL = "select * from usuarios where usuario=? and senha=md5(?)";
 
             cmd = con.prepareStatement(SQL);
             cmd.setString(1, u.getUsuario());

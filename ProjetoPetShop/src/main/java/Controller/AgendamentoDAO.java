@@ -12,7 +12,7 @@ public class AgendamentoDAO {
     private final Connection con;
     private PreparedStatement cmd;
 
-    public AgendamentoDAO(Connection con) {
+    public AgendamentoDAO() {
         this.con = Conexao.conectar();
     }
 

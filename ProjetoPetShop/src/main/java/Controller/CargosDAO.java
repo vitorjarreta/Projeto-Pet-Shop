@@ -12,7 +12,7 @@ public class CargosDAO {
     private final Connection con;
     private PreparedStatement cmd;
 
-    public CargosDAO(Connection con) {
+    public CargosDAO() {
         this.con = Conexao.conectar();
     }
 
@@ -108,5 +108,4 @@ public class CargosDAO {
             Conexao.Desconectar(con);
         }
     }
-
 }

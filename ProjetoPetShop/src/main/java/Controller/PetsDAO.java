@@ -12,7 +12,7 @@ public class PetsDAO {
     private final Connection con;
     private PreparedStatement cmd;
 
-    public PetsDAO(Connection con) {
+    public PetsDAO() {
         this.con = Conexao.conectar();
     }
 

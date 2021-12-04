@@ -12,7 +12,7 @@ public class PedidosDAO {
     private final Connection con;
     private PreparedStatement cmd;
 
-    public PedidosDAO(Connection con) {
+    public PedidosDAO() {
         this.con = Conexao.conectar();
     }
 

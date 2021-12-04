@@ -12,7 +12,7 @@ public class FuncionariosDAO {
     private final Connection con;
     private PreparedStatement cmd;
     
-    public FuncionariosDAO(Connection con) {
+    public FuncionariosDAO() {
         this.con = Conexao.conectar();
     }
     

@@ -4,6 +4,10 @@
  */
 package View;
 
+import Controller.CargosDAO;
+import Model.Cargos;
+import java.util.List;
+
 /**
  *
  * @author felipe.guerrera
@@ -79,18 +83,8 @@ public class FormCadastro extends javax.swing.JFrame {
         cadastro_nome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         cadastro_usuario.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        cadastro_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastro_usuarioActionPerformed(evt);
-            }
-        });
 
         cadastro_email.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        cadastro_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastro_emailActionPerformed(evt);
-            }
-        });
 
         jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -216,14 +210,6 @@ public class FormCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastro_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastro_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadastro_usuarioActionPerformed
-
-    private void cadastro_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastro_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadastro_emailActionPerformed
-
     private void bt_voltarentradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarentradaActionPerformed
         FormEntrada fun = new FormEntrada();
         fun.setVisible(true);
@@ -288,4 +274,13 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public void ConfigurarForm(){
+        this.setTitle("Cadastro");
+        this.setResizable(false);
+        cadastro_nome.requestFocus();
+        
+        List<Cargos> lista= new CargosDAO().listar();
+    }
+
 }

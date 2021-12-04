@@ -12,7 +12,7 @@ public class ServicoDAO {
     private final Connection con;
     private PreparedStatement cmd;
     
-    public ServicoDAO(Connection con) {
+    public ServicoDAO() {
         this.con = Conexao.conectar();
     }
     
