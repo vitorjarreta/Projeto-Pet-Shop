@@ -51,7 +51,7 @@ public class CargosDAO {
             while (rs.next()) {
                 Cargos cg = new Cargos();
                 cg.setId(rs.getInt("id"));
-                cg.setId(rs.getInt("nome"));
+                cg.setNome(rs.getString("nome"));
                 lista.add(cg);
             }
             return lista;
@@ -97,7 +97,7 @@ public class CargosDAO {
             while (rs.next()) {
                 Cargos cg = new Cargos();
                 cg.setId(rs.getInt("id"));
-                cg.setId(rs.getInt("nome"));
+                cg.setNome(rs.getString("nome"));
                 lista.add(cg);
             }
             return lista;

@@ -54,10 +54,10 @@ public class FuncionariosDAO {
             while (rs.next()) {
                 Funcionarios fun = new Funcionarios();
                 fun.setId(rs.getInt("id"));
-                fun.setId(rs.getInt("nome"));
-                fun.setId(rs.getInt("salario"));
-                fun.setId(rs.getInt("email"));
-                fun.setId(rs.getInt("id_cargos"));
+                fun.setNome(rs.getString("nome"));
+                fun.setSalario(rs.getDouble("salario"));
+                fun.setEmail(rs.getString("email"));
+                fun.setId_cargo(rs.getInt("id_cargos"));
                 lista.add(fun);
             }
             return lista;
@@ -106,10 +106,10 @@ public class FuncionariosDAO {
             while (rs.next()) {
                 Funcionarios fun = new Funcionarios();
                 fun.setId(rs.getInt("id"));
-                fun.setId(rs.getInt("nome"));
-                fun.setId(rs.getInt("salario"));
-                fun.setId(rs.getInt("email"));
-                fun.setId(rs.getInt("id_cargos"));
+                fun.setNome(rs.getString("nome"));
+                fun.setSalario(rs.getDouble("salario"));
+                fun.setEmail(rs.getString("email"));
+                fun.setId_cargo(rs.getInt("id_cargos"));
                 lista.add(fun);
             }
             return lista;

@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Cargos;
+import Model.Pets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,14 +16,15 @@ public class PetsDAO {
         this.con = Conexao.conectar();
     }
 
-    public boolean inserir(Cargos cg) {
+    public boolean inserir(Pets pt) {
         try {
-            String SQL = "insert into cargos"
-                    + "(nome)"
-                    + "values (?)";
+            String SQL = "insert into pets"
+                    + "(nome, raca)"
+                    + "values (?, ?)";
 
             cmd = con.prepareCall(SQL);
-            cmd.setString(1, cg.getNome());
+            cmd.setString(1, pt.getNome());
+            cmd.setString(2, pt.getRaca());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -40,19 +41,20 @@ public class PetsDAO {
         }
     }
 
-    public List<Cargos> listar() {
+    public List<Pets> listar() {
         try {
-            String SQL = "select * from cargos order by id";
+            String SQL = "select * from pets order by id";
 
             cmd = con.prepareCall(SQL);
 
-            List<Cargos> lista = new ArrayList<>();
+            List<Pets> lista = new ArrayList<>();
             ResultSet rs = cmd.executeQuery();
             while (rs.next()) {
-                Cargos cg = new Cargos();
-                cg.setId(rs.getInt("id"));
-                cg.setId(rs.getInt("nome"));
-                lista.add(cg);
+                Pets pt = new Pets();
+                pt.setId(rs.getInt("id"));
+                pt.setNome(rs.getString("nome"));
+                pt.setRaca(rs.getString("raca"));
+                lista.add(pt);
             }
             return lista;
         } catch (Exception e) {
@@ -63,13 +65,13 @@ public class PetsDAO {
         }
     }
 
-    public boolean atualizar(Cargos cg) {
+    public boolean atualizar(Pets pt) {
         try {
-            String SQL = "update cgcionarios set"
+            String SQL = "update ptcionarios set"
                     + "nome=? where id=?";
 
             cmd = con.prepareStatement(SQL);
-            cmd.setString(1, cg.getNome());
+            cmd.setString(1, pt.getNome());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -85,20 +87,21 @@ public class PetsDAO {
         }
     }
 
-    public List<Cargos> pesquisarNome(String nome) {
+    public List<Pets> pesquisarNome(String nome) {
         try {
 
-            String SQL = "select * from cargos where nome ilike ? ordery id";
+            String SQL = "select * from pets where nome ilike ? ordery id";
             cmd = con.prepareCall(SQL);
             cmd.setString(1, "%" + nome + "%");
 
-            List<Cargos> lista = new ArrayList<>();
+            List<Pets> lista = new ArrayList<>();
             ResultSet rs = cmd.executeQuery();
             while (rs.next()) {
-                Cargos cg = new Cargos();
-                cg.setId(rs.getInt("id"));
-                cg.setId(rs.getInt("nome"));
-                lista.add(cg);
+                Pets pt = new Pets();
+                pt.setId(rs.getInt("id"));
+                pt.setNome(rs.getString("nome"));
+                pt.setRaca(rs.getString("raca"));
+                lista.add(pt);
             }
             return lista;
         } catch (Exception e) {
