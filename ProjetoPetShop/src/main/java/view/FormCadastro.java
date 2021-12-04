@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package View;
 
 /**
  *
@@ -227,6 +227,7 @@ public class FormCadastro extends javax.swing.JFrame {
     private void bt_voltarentradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarentradaActionPerformed
         FormEntrada fun = new FormEntrada();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_voltarentradaActionPerformed
 
     private void bt_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fecharActionPerformed

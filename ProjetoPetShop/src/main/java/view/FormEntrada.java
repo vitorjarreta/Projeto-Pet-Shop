@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package View;
 
 /**
  *
@@ -34,6 +34,7 @@ public class FormEntrada extends javax.swing.JFrame {
         bt_irlogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
@@ -132,11 +133,13 @@ public class FormEntrada extends javax.swing.JFrame {
     private void bt_irlogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_irlogarActionPerformed
         FormLogin fun = new FormLogin();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_irlogarActionPerformed
 
     private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
         FormCadastro fun = new FormCadastro();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_ircadastroActionPerformed
 
     private void bt_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fecharActionPerformed
@@ -186,4 +189,10 @@ public class FormEntrada extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nomepetshop;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm(){
+        
+        
+    }
+
 }

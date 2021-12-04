@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package View;
+
+import Controller.UsuarioDAO;
+import Model.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +47,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel3.setText("Sair");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
@@ -164,17 +169,40 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_entrarActionPerformed
-        
+        Usuario u = new Usuario();
+        u.setUsuario(txt_usuario.getText());
+        u.setSenha(new String(psw_senha.getPassword()));
+
+        if (u.getUsuario().trim().isEmpty() || u.getSenha().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "ERRO: Usuário e Senha não podem estra vazios",
+                    "ERRO",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        } else {
+            if (new UsuarioDAO().Logar(u)) {
+                FormCadastro form = new FormCadastro();
+                form.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "ERRO: Usuário ou Senha inválidos",
+                        "ERRO",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
     }//GEN-LAST:event_bt_entrarActionPerformed
 
     private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
         FormCadastro fun = new FormCadastro();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_ircadastroActionPerformed
 
     private void bt_voltarentradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarentradaActionPerformed
         FormEntrada fun = new FormEntrada();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_voltarentradaActionPerformed
 
     private void bt_fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_fecharActionPerformed

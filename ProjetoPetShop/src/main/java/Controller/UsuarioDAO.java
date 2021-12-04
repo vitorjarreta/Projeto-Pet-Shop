@@ -14,6 +14,10 @@ public class UsuarioDAO {
         this.con = Conexao.conectar();
     }
 
+    public UsuarioDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public boolean Logar(Usuario u) {
         try {
             String SQL = "select * from usuarios where"
