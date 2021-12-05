@@ -181,7 +181,7 @@ public class FormLogin extends javax.swing.JFrame {
             );
         } else {
             if (new UsuarioDAO().Logar(u)) {
-                FormCadastro form = new FormCadastro();
+                FormCadastrofunc form = new FormCadastrofunc();
                 form.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null,
@@ -194,7 +194,7 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_entrarActionPerformed
 
     private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
-        FormCadastro fun = new FormCadastro();
+        FormCadastrofunc fun = new FormCadastrofunc();
         fun.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bt_ircadastroActionPerformed
