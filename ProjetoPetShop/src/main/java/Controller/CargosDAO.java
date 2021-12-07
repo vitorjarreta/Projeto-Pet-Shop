@@ -4,6 +4,7 @@ import Model.Cargos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class CargosDAO {
                 return false;
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("ERRO:" + e.getMessage());
             return false;
         } finally {
@@ -55,7 +56,7 @@ public class CargosDAO {
                 lista.add(cg);
             }
             return lista;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("ERRO:" + e.getMessage());
             return null;
         } finally {
@@ -77,7 +78,7 @@ public class CargosDAO {
             } else {
                 return false;
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("ERRO:" + e.getMessage());
             return false;
         } finally {
@@ -101,7 +102,7 @@ public class CargosDAO {
                 lista.add(cg);
             }
             return lista;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("ERRO:" + e.getMessage());
             return null;
         } finally {
@@ -125,7 +126,7 @@ public class CargosDAO {
             }
             return null;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println("ERRO:" + e.getMessage());
             return null;
         } finally {

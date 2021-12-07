@@ -14,23 +14,9 @@ import javax.swing.JOptionPane;
  */
 public class FormCadastrarcargo extends javax.swing.JFrame {
 
-    private String id;
-    private boolean atualizar;
-
     public FormCadastrarcargo() {
         initComponents();
         ConfigurarForm();
-    }
-
-    public FormCadastrarcargo(String id, boolean atualizar) {
-        this();
-        this.id = id;
-        this.atualizar = atualizar;
-
-        Cargos car = new CargosDAO().PesquisarProId(id);
-        if (car != null) {
-            txt_novocargo.setText(car.getNome());
-        }
     }
 
     /**
@@ -176,12 +162,7 @@ public class FormCadastrarcargo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O campo não pode estra vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
 
         } else {
-            if (atualizar = false) {
-                resultado = cardao.inserir(car);
-            } else {
-                car.setId(Integer.parseInt(id));
-                resultado = cardao.atualizar(car);
-            }
+            resultado = cardao.inserir(car);
         }
 
         if (resultado == true) {

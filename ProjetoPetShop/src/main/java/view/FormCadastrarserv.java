@@ -41,8 +41,10 @@ public class FormCadastrarserv extends javax.swing.JFrame {
             DefaultComboBoxModel m = (DefaultComboBoxModel) jComboBox1.getModel();
             for (int i = 0; i < m.getSize(); i++) {
                 Funcionarios fun = (Funcionarios) m.getElementAt(i);
-                jComboBox1.setSelectedIndex(i);
-                break;
+                if(fun.getId() == ser.getId_funcionarios()){
+                    jComboBox1.setSelectedIndex(i);
+                    break;
+                }
             }
         }
     }

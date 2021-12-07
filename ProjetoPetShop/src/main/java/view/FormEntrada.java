@@ -4,6 +4,8 @@
  */
 package View;
 
+import view.FormUsuario;
+
 /**
  *
  * @author felipe.guerrera
@@ -137,7 +139,7 @@ public class FormEntrada extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_irlogarActionPerformed
 
     private void bt_ircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ircadastroActionPerformed
-        FormCadastrofunc fun = new FormCadastrofunc();
+        FormUsuario fun = new FormUsuario();
         fun.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bt_ircadastroActionPerformed
