@@ -1,9 +1,11 @@
 package Model;
 
 public class Pets {
+
     private int id;
     private String nome;
     private String raca;
+    private int id_clientes;
 
     public Pets() {
     }
@@ -38,5 +40,12 @@ public class Pets {
         this.raca = raca;
     }
     
-    
+     public int getId_clientes() {
+        return id_clientes;
+    }
+
+    public void setId_clientes(int id_clientes) {
+        this.id_clientes = id_clientes;
+    }
+
 }

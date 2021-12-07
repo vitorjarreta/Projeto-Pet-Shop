@@ -19,12 +19,13 @@ public class PetsDAO {
     public boolean inserir(Pets pt) {
         try {
             String SQL = "insert into pets"
-                    + "(nome, raca)"
-                    + "values (?, ?)";
+                    + "(nome, raca, id_clientes)"
+                    + "values (?,?,?)";
 
             cmd = con.prepareCall(SQL);
             cmd.setString(1, pt.getNome());
             cmd.setString(2, pt.getRaca());
+            cmd.setInt(3, pt.getId_clientes());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -54,6 +55,7 @@ public class PetsDAO {
                 pt.setId(rs.getInt("id"));
                 pt.setNome(rs.getString("nome"));
                 pt.setRaca(rs.getString("raca"));
+                pt.setId_clientes(rs.getInt("id_clientes"));
                 lista.add(pt);
             }
             return lista;
@@ -67,11 +69,13 @@ public class PetsDAO {
 
     public boolean atualizar(Pets pt) {
         try {
-            String SQL = "update ptcionarios set"
-                    + "nome=? where id=?";
+            String SQL = "update pets set nome=?, raca=?, id_clientes=? where id=?";
 
             cmd = con.prepareStatement(SQL);
+            cmd = con.prepareCall(SQL);
             cmd.setString(1, pt.getNome());
+            cmd.setString(2, pt.getRaca());
+            cmd.setInt(3, pt.getId_clientes());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -101,6 +105,7 @@ public class PetsDAO {
                 pt.setId(rs.getInt("id"));
                 pt.setNome(rs.getString("nome"));
                 pt.setRaca(rs.getString("raca"));
+                pt.setId_clientes(rs.getInt("id_clientes"));
                 lista.add(pt);
             }
             return lista;
@@ -125,6 +130,7 @@ public class PetsDAO {
                 pt.setId(rs.getInt("id"));
                 pt.setNome(rs.getString("nome"));
                 pt.setRaca(rs.getString("raca"));
+                pt.setId_clientes(rs.getInt("id_clientes"));
             }
             return true;
 

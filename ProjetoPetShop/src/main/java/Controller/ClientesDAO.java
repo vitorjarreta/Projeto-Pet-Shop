@@ -19,7 +19,7 @@ public class ClientesDAO {
     public boolean inserir(Clientes cli) {
         try {
             String SQL = "insert into clientes"
-                    + "(nome,cpf, email, telefone, id_pets)"
+                    + "(nome,cpf, email, telefone)"
                     + "values (?,?,?,?,?)";
 
             cmd = con.prepareCall(SQL);
@@ -27,7 +27,6 @@ public class ClientesDAO {
             cmd.setString(2, cli.getCpf());
             cmd.setString(3, cli.getEmail());
             cmd.setString(4, cli.getTelefone());
-            cmd.setInt(5, cli.getId_pets());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -59,7 +58,7 @@ public class ClientesDAO {
                 cli.setCpf(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setTelefone(rs.getString("telefone"));
-                cli.setId_pets(rs.getInt("id_pets"));
+
                 lista.add(cli);
             }
             return lista;
@@ -81,7 +80,6 @@ public class ClientesDAO {
             cmd.setString(2, cli.getCpf());
             cmd.setString(3, cli.getEmail());
             cmd.setString(4, cli.getTelefone());
-            cmd.setInt(5, cli.getId_pets());
 
             ResultSet rs = cmd.executeQuery();
             if (rs.next()) {
@@ -97,7 +95,7 @@ public class ClientesDAO {
         }
     }
 
-    public List<Clientes> pesquisarPets(String id) {
+    /*public List<Clientes> pesquisarPets(String id) {
         try {
 
             String SQL = "select * from clientes where id_pets=?";
@@ -113,7 +111,7 @@ public class ClientesDAO {
                 cli.setCpf(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setTelefone(rs.getString("telefone"));
-                cli.setId_pets(rs.getInt("id_pets"));
+
                 lista.add(cli);
             }
             return lista;
@@ -123,8 +121,7 @@ public class ClientesDAO {
         } finally {
             Conexao.Desconectar(con);
         }
-    }
-
+    }*/
     public List<Clientes> pesquisarNome(String nome) {
         try {
 
@@ -141,7 +138,7 @@ public class ClientesDAO {
                 cli.setCpf(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setTelefone(rs.getString("telefone"));
-                cli.setId_pets(rs.getInt("id_pets"));
+
                 lista.add(cli);
             }
             return lista;
@@ -152,7 +149,7 @@ public class ClientesDAO {
             Conexao.Desconectar(con);
         }
     }
-    
+
     public boolean PesquisarProId(String id) {
         try {
 
@@ -168,7 +165,7 @@ public class ClientesDAO {
                 cli.setCpf(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setTelefone(rs.getString("telefone"));
-                cli.setId_pets(rs.getInt("id_pets"));
+
             }
             return true;
 
