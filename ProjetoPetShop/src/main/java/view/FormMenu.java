@@ -29,12 +29,12 @@ public class FormMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bt_cadastrarprod = new javax.swing.JButton();
+        bt_verprod = new javax.swing.JButton();
+        bt_novoserv = new javax.swing.JButton();
+        vt_verservico = new javax.swing.JButton();
+        bt_cadastrarcliente = new javax.swing.JButton();
+        bt_cadastrarpet = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,56 +49,71 @@ public class FormMenu extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Pet Shop Bicho Sacana");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 0));
-        jButton1.setText("Cadastrar Produtos");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_cadastrarprod.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastrarprod.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastrarprod.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastrarprod.setText("Cadastrar Produtos");
+        bt_cadastrarprod.setBorder(null);
+        bt_cadastrarprod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_cadastrarprodActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 255));
-        jButton2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 0));
-        jButton2.setText("Ver Produtos");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bt_verprod.setBackground(new java.awt.Color(0, 0, 255));
+        bt_verprod.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_verprod.setForeground(new java.awt.Color(255, 255, 0));
+        bt_verprod.setText("Ver Produtos");
+        bt_verprod.setBorder(null);
+        bt_verprod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bt_verprodActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 255));
-        jButton3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 0));
-        jButton3.setText("Novo Serviço");
-        jButton3.setBorder(null);
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 255));
-        jButton4.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 0));
-        jButton4.setText("Ver Serviços");
-        jButton4.setBorder(null);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bt_novoserv.setBackground(new java.awt.Color(0, 0, 255));
+        bt_novoserv.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_novoserv.setForeground(new java.awt.Color(255, 255, 0));
+        bt_novoserv.setText("Novo Serviço");
+        bt_novoserv.setBorder(null);
+        bt_novoserv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bt_novoservActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 255));
-        jButton5.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 0));
-        jButton5.setText("Cadastrar Clientes");
-        jButton5.setBorder(null);
+        vt_verservico.setBackground(new java.awt.Color(0, 0, 255));
+        vt_verservico.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        vt_verservico.setForeground(new java.awt.Color(255, 255, 0));
+        vt_verservico.setText("Ver Serviços");
+        vt_verservico.setBorder(null);
+        vt_verservico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vt_verservicoActionPerformed(evt);
+            }
+        });
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 255));
-        jButton6.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 0));
-        jButton6.setText("Cadastrar Pet");
-        jButton6.setBorder(null);
+        bt_cadastrarcliente.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastrarcliente.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastrarcliente.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastrarcliente.setText("Cadastrar Clientes");
+        bt_cadastrarcliente.setBorder(null);
+        bt_cadastrarcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarclienteActionPerformed(evt);
+            }
+        });
+
+        bt_cadastrarpet.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastrarpet.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastrarpet.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastrarpet.setText("Cadastrar Pet");
+        bt_cadastrarpet.setBorder(null);
+        bt_cadastrarpet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarpetActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(0, 0, 255));
         jButton7.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -126,12 +141,12 @@ public class FormMenu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(71, 71, 71)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1)))
+                                    .addComponent(bt_novoserv, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_verprod, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_cadastrarpet, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_cadastrarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vt_verservico, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_cadastrarprod)))
                             .addComponent(jLabel2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -146,17 +161,17 @@ public class FormMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
+                .addComponent(bt_cadastrarprod)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(bt_verprod)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(bt_novoserv)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(bt_cadastrarpet)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(bt_cadastrarcliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(vt_verservico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addContainerGap())
@@ -180,20 +195,35 @@ public class FormMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_cadastrarprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarprodActionPerformed
         FormCadastrarprod fun = new FormCadastrarprod();
         fun.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_cadastrarprodActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bt_verprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verprodActionPerformed
         FormVerprod fun = new FormVerprod();
         fun.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bt_verprodActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void vt_verservicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vt_verservicoActionPerformed
         FormVerserv fun = new FormVerserv();
         fun.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_vt_verservicoActionPerformed
+
+    private void bt_cadastrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarclienteActionPerformed
+        FormCadastrarcliente fun = new FormCadastrarcliente();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_cadastrarclienteActionPerformed
+
+    private void bt_cadastrarpetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarpetActionPerformed
+        FormCadastrarpet fun = new FormCadastrarpet();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_cadastrarpetActionPerformed
+
+    private void bt_novoservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_novoservActionPerformed
+        FormCadastrarserv fun = new FormCadastrarserv();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_novoservActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,15 +261,15 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton bt_cadastrarcliente;
+    private javax.swing.JButton bt_cadastrarpet;
+    private javax.swing.JButton bt_cadastrarprod;
+    private javax.swing.JButton bt_novoserv;
+    private javax.swing.JButton bt_verprod;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton vt_verservico;
     // End of variables declaration//GEN-END:variables
 }
