@@ -38,6 +38,7 @@ public class FormMenu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         bt_cadastrarcargo = new javax.swing.JButton();
         bt_agendamento = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,6 +146,17 @@ public class FormMenu extends javax.swing.JFrame {
         bt_agendamento.setText("Agendamento");
         bt_agendamento.setBorder(null);
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 255));
+        jButton1.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 0));
+        jButton1.setText("Cadastrar Funcionário");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -173,7 +185,8 @@ public class FormMenu extends javax.swing.JFrame {
                                     .addComponent(bt_cadastrarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(vt_verservico, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(bt_cadastrarprod)))
-                            .addComponent(bt_cadastrarcargo)))
+                            .addComponent(bt_cadastrarcargo)
+                            .addComponent(jButton1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(bt_agendamento)))
@@ -202,7 +215,9 @@ public class FormMenu extends javax.swing.JFrame {
                 .addComponent(bt_cadastrarcargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_agendamento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addContainerGap())
         );
@@ -228,37 +243,50 @@ public class FormMenu extends javax.swing.JFrame {
     private void bt_cadastrarprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarprodActionPerformed
         FormCadastrarprod fun = new FormCadastrarprod();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_cadastrarprodActionPerformed
 
     private void bt_verprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verprodActionPerformed
         FormVerprod fun = new FormVerprod();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_verprodActionPerformed
 
     private void vt_verservicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vt_verservicoActionPerformed
         FormVerserv fun = new FormVerserv();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_vt_verservicoActionPerformed
 
     private void bt_cadastrarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarclienteActionPerformed
         FormCadastrarcliente fun = new FormCadastrarcliente();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_cadastrarclienteActionPerformed
 
     private void bt_cadastrarpetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarpetActionPerformed
         FormCadastrarpet fun = new FormCadastrarpet();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_cadastrarpetActionPerformed
 
     private void bt_novoservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_novoservActionPerformed
         FormCadastrarserv fun = new FormCadastrarserv();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_novoservActionPerformed
 
     private void bt_cadastrarcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarcargoActionPerformed
         FormCadastrarcargo fun = new FormCadastrarcargo();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bt_cadastrarcargoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FormCadastrofunc fun = new FormCadastrofunc();
+        fun.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +331,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JButton bt_cadastrarprod;
     private javax.swing.JButton bt_novoserv;
     private javax.swing.JButton bt_verprod;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

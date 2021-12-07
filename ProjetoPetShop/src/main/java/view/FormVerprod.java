@@ -37,8 +37,8 @@ public class FormVerprod extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         pesquisar_vlrproduto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        combo_qtdproduto = new javax.swing.JComboBox<>();
         bt_pesquisarproduto = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,25 +89,27 @@ public class FormVerprod extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Pesquisar produto:");
 
+        pesquisar_produto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
         jLabel3.setBackground(new java.awt.Color(0, 0, 255));
         jLabel3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Valor do Produto:");
+
+        pesquisar_vlrproduto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 255));
         jLabel4.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("Quantidade do produto:");
 
-        combo_qtdproduto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        combo_qtdproduto.setForeground(new java.awt.Color(0, 0, 255));
-        combo_qtdproduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-
         bt_pesquisarproduto.setBackground(new java.awt.Color(0, 0, 255));
         bt_pesquisarproduto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         bt_pesquisarproduto.setForeground(new java.awt.Color(255, 255, 0));
         bt_pesquisarproduto.setText("Pesquisar");
         bt_pesquisarproduto.setBorder(null);
+
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout txt_pesquisarprodutoLayout = new javax.swing.GroupLayout(txt_pesquisarproduto);
         txt_pesquisarproduto.setLayout(txt_pesquisarprodutoLayout);
@@ -121,7 +123,7 @@ public class FormVerprod extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                        .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,15 +132,14 @@ public class FormVerprod extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_pesquisarprodutoLayout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(combo_qtdproduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_pesquisarprodutoLayout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(pesquisar_vlrproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1))
+                            .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pesquisar_vlrproduto)))
                         .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
@@ -162,10 +163,10 @@ public class FormVerprod extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(combo_qtdproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_pesquisarproduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -235,7 +236,6 @@ public class FormVerprod extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_pesquisarproduto;
-    private javax.swing.JComboBox<String> combo_qtdproduto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -243,6 +243,7 @@ public class FormVerprod extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField pesquisar_produto;
     private javax.swing.JTextField pesquisar_vlrproduto;
     private javax.swing.JTable tabela_produtos;
