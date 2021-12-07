@@ -36,6 +36,8 @@ public class FormMenu extends javax.swing.JFrame {
         bt_cadastrarcliente = new javax.swing.JButton();
         bt_cadastrarpet = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        bt_cadastrarcargo = new javax.swing.JButton();
+        bt_agendamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +128,23 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
+        bt_cadastrarcargo.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastrarcargo.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastrarcargo.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastrarcargo.setText("Cadastrar Novo Cargo");
+        bt_cadastrarcargo.setBorder(null);
+        bt_cadastrarcargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarcargoActionPerformed(evt);
+            }
+        });
+
+        bt_agendamento.setBackground(new java.awt.Color(0, 0, 255));
+        bt_agendamento.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_agendamento.setForeground(new java.awt.Color(255, 255, 0));
+        bt_agendamento.setText("Agendamento");
+        bt_agendamento.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,8 +157,15 @@ public class FormMenu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
                                 .addComponent(jLabel1))
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
+                                .addGap(9, 9, 9)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(bt_novoserv, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(bt_verprod, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,10 +173,10 @@ public class FormMenu extends javax.swing.JFrame {
                                     .addComponent(bt_cadastrarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(vt_verservico, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(bt_cadastrarprod)))
-                            .addComponent(jLabel2)))
+                            .addComponent(bt_cadastrarcargo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton7)))
+                        .addGap(164, 164, 164)
+                        .addComponent(bt_agendamento)))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,7 +186,7 @@ public class FormMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_cadastrarprod)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_verprod)
@@ -172,7 +198,11 @@ public class FormMenu extends javax.swing.JFrame {
                 .addComponent(bt_cadastrarcliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vt_verservico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_cadastrarcargo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_agendamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addContainerGap())
         );
@@ -225,6 +255,11 @@ public class FormMenu extends javax.swing.JFrame {
         fun.setVisible(true);
     }//GEN-LAST:event_bt_novoservActionPerformed
 
+    private void bt_cadastrarcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarcargoActionPerformed
+        FormCadastrarcargo fun = new FormCadastrarcargo();
+        fun.setVisible(true);
+    }//GEN-LAST:event_bt_cadastrarcargoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +296,8 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_agendamento;
+    private javax.swing.JButton bt_cadastrarcargo;
     private javax.swing.JButton bt_cadastrarcliente;
     private javax.swing.JButton bt_cadastrarpet;
     private javax.swing.JButton bt_cadastrarprod;

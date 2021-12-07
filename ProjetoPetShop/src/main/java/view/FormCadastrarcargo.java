@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View;
+package view;
 
 /**
  *
  * @author felipe.guerrera
  */
-public class FormCadastrarpet extends javax.swing.JFrame {
+public class FormCadastrarcargo extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormCadastrarpet
+     * Creates new form FormCadastrarcargo
      */
-    public FormCadastrarpet() {
+    public FormCadastrarcargo() {
         initComponents();
     }
 
@@ -28,37 +28,36 @@ public class FormCadastrarpet extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        nome_pet = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        raca_pet = new javax.swing.JTextField();
-        bt_cadastrarpet = new javax.swing.JButton();
+        txt_novocargo = new javax.swing.JTextField();
+        bt_cadastrarnovocargo = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("Cadastrar Pet");
+        jLabel1.setText("Cadastrar Novo Cargo");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 0));
-        jButton1.setText("Sair");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel2.setBackground(new java.awt.Color(0, 0, 255));
+        jLabel2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setText("Nome do Cargo:");
+
+        bt_cadastrarnovocargo.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastrarnovocargo.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastrarnovocargo.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastrarnovocargo.setText("Cadastrar Novo Cargo");
+        bt_cadastrarnovocargo.setBorder(null);
 
         jButton2.setBackground(new java.awt.Color(0, 0, 255));
         jButton2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 0));
-        jButton2.setText("Voltar");
+        jButton2.setText("Sair");
         jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,21 +65,16 @@ public class FormCadastrarpet extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setText("Nome do Pet:");
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel3.setText("Raça do Pet:");
-
-        bt_cadastrarpet.setBackground(new java.awt.Color(0, 0, 255));
-        bt_cadastrarpet.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        bt_cadastrarpet.setForeground(new java.awt.Color(255, 255, 0));
-        bt_cadastrarpet.setText("Cadastrar Pet");
-        bt_cadastrarpet.setBorder(null);
+        jButton3.setBackground(new java.awt.Color(0, 0, 255));
+        jButton3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 0));
+        jButton3.setText("Voltar");
+        jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,29 +84,21 @@ public class FormCadastrarpet extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nome_pet, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_novocargo, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(121, 121, 121)
+                                    .addGap(108, 108, 108)
                                     .addComponent(jLabel1))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel2))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGap(25, 25, 25)
+                                    .addComponent(jLabel2)))
+                            .addComponent(bt_cadastrarnovocargo))
+                        .addGap(0, 115, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                                .addComponent(bt_cadastrarpet, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(raca_pet, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -123,16 +109,13 @@ public class FormCadastrarpet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nome_pet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(raca_pet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addComponent(txt_novocargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_cadastrarnovocargo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(bt_cadastrarpet))
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -150,14 +133,14 @@ public class FormCadastrarpet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,33 +159,31 @@ public class FormCadastrarpet extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarpet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadastrarcargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarpet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadastrarcargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarpet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadastrarcargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormCadastrarpet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadastrarcargo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormCadastrarpet().setVisible(true);
+                new FormCadastrarcargo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_cadastrarpet;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_cadastrarnovocargo;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField nome_pet;
-    private javax.swing.JTextField raca_pet;
+    private javax.swing.JTextField txt_novocargo;
     // End of variables declaration//GEN-END:variables
 }
