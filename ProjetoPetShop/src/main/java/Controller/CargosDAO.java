@@ -108,4 +108,27 @@ public class CargosDAO {
             Conexao.Desconectar(con);
         }
     }
+
+    public boolean PesquisarProId(String id) {
+        try {
+
+            String SQL = "select * from cargos where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Cargos cg = new Cargos();
+                cg.setId(rs.getInt("id"));
+                cg.setNome(rs.getString("nome"));
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
 }

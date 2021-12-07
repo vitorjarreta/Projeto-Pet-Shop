@@ -152,5 +152,32 @@ public class ClientesDAO {
             Conexao.Desconectar(con);
         }
     }
+    
+    public boolean PesquisarProId(String id) {
+        try {
+
+            String SQL = "select * from clientes where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Clientes cli = new Clientes();
+                cli.setId(rs.getInt("id"));
+                cli.setNome(rs.getString("nome"));
+                cli.setCpf(rs.getString("cpf"));
+                cli.setEmail(rs.getString("email"));
+                cli.setTelefone(rs.getString("telefone"));
+                cli.setId_pets(rs.getInt("id_pets"));
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
 
 }

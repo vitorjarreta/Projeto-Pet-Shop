@@ -150,5 +150,30 @@ public class ServicoDAO {
         }
     }
     
+    public boolean PesquisarProId(String id) {
+        try {
+
+            String SQL = "select * from servicos where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Servicos srv = new Servicos();
+                srv.setId(rs.getInt("id"));
+                srv.setNome(rs.getString("nome"));
+                srv.setDescricao(rs.getString("descricao"));
+                srv.setPreco(rs.getDouble("preco"));
+                srv.setId_funcionarios(rs.getInt("id_funcionarios"));;
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
     
 }

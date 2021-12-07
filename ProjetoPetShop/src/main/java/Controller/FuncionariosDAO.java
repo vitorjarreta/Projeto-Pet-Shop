@@ -148,5 +148,30 @@ public class FuncionariosDAO {
         }
     }
     
+    public boolean PesquisarProId(String id){
+        try {
+                    
+            String SQL = "select * from funcionarios where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+            
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Funcionarios fun = new Funcionarios();
+                fun.setId(rs.getInt("id"));
+                fun.setId(rs.getInt("nome"));
+                fun.setId(rs.getInt("email"));
+                fun.setId(rs.getInt("id_cargos"));
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
+    
     
 }

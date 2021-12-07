@@ -4,6 +4,8 @@
  */
 package view;
 
+import Model.Clientes;
+
 /**
  *
  * @author felipe.guerrera
@@ -103,6 +105,11 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("Cadastrar Cliente");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,9 +128,10 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
                             .addComponent(email_cliente)
                             .addComponent(cpf_cliente)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel5))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(90, 90, 90))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +198,13 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,4 +256,10 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
     private javax.swing.JTextField nome_cliente;
     private javax.swing.JTextField telefone_cliente;
     // End of variables declaration//GEN-END:variables
+
+
+    public void ConfigurarForm(){
+        setTitle("Cadastro de Cliente");
+        setResizable(false);
+    }
 }

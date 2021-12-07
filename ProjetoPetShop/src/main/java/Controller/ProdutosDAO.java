@@ -150,5 +150,30 @@ public class ProdutosDAO {
         }
     }
     
+    public boolean PesquisarProId(String id) {
+        try {
+
+            String SQL = "select * from produtos where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Produtos prod = new Produtos();
+                prod.setId(rs.getInt("id"));
+                prod.setNome(rs.getString("nome"));
+                prod.setDescricao(rs.getString("descrição"));
+                prod.setPreco(rs.getDouble("preco"));
+                prod.setQuantidade(rs.getInt("quantidade"));
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
     
 }

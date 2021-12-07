@@ -111,5 +111,29 @@ public class PetsDAO {
             Conexao.Desconectar(con);
         }
     }
+    
+    public boolean PesquisarProId(String id) {
+        try {
+
+            String SQL = "select * from pets where id=?";
+            cmd = con.prepareCall(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Pets pt = new Pets();
+                pt.setId(rs.getInt("id"));
+                pt.setNome(rs.getString("nome"));
+                pt.setRaca(rs.getString("raca"));
+            }
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("ERRO:" + e.getMessage());
+            return false;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
 
 }
