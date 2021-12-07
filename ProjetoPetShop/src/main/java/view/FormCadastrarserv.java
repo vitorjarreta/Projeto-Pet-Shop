@@ -4,17 +4,47 @@
  */
 package View;
 
+import Controller.FuncionariosDAO;
+import Controller.ServicoDAO;
+import Model.Funcionarios;
+import Model.Servicos;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author felipe.guerrera
  */
 public class FormCadastrarserv extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCadastrarserv
-     */
+    private String id;
+    private boolean atualizar = false;
+
     public FormCadastrarserv() {
         initComponents();
+        ConfigurarForm();
+    }
+
+    public FormCadastrarserv(String id, boolean atualizar) {
+        this();
+        this.id = id;
+        this.atualizar = atualizar;
+
+        Servicos ser = new ServicoDAO().PesquisarProId(id);
+        if (ser != null) {
+            jTextField1.setText(ser.getNome());
+            jTextField2.setText(ser.getDescricao());
+            jTextField3.setText(Double.toString(ser.getPreco()));
+
+            DefaultComboBoxModel m = (DefaultComboBoxModel) jComboBox1.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Funcionarios fun = (Funcionarios) m.getElementAt(i);
+                jComboBox1.setSelectedIndex(i);
+                break;
+            }
+        }
     }
 
     /**
@@ -90,7 +120,6 @@ public class FormCadastrarserv extends javax.swing.JFrame {
         jLabel4.setText("Preço:");
 
         jTextField3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextField3.setText("R$");
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 255));
         jLabel5.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -105,6 +134,11 @@ public class FormCadastrarserv extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("Cadastrar Serviço");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,11 +228,46 @@ public class FormCadastrarserv extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Servicos ser = new Servicos();
+        ser.setNome(jTextField1.getText());
+        ser.setDescricao(jTextField2.getText());
+        ser.setPreco(Double.parseDouble(jTextField3.getText()));
+        Funcionarios fun = (Funcionarios) jComboBox1.getSelectedItem();
+        ser.setId_funcionarios(fun.getId());
+
+        ServicoDAO serdao = new ServicoDAO();
+        boolean resultado = false;
+
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos Nome e Preço não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizar = false) {
+                resultado = serdao.inserir(ser);
+            } else {
+                resultado = serdao.atualizar(ser);
+            }
+        }
+
+        if (resultado == true) {
+            JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        jTextField1.setText("");
+        jTextField1.requestFocus();
+        jTextField2.setText("");
+        jTextField3.setText("");
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,4 +319,19 @@ public class FormCadastrarserv extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm() {
+        setTitle("Cadastrar Serviço");
+        setResizable(false);
+        jTextField1.requestFocus();
+
+        List<Funcionarios> listar = new FuncionariosDAO().listar();
+        if (listar != null) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for (Funcionarios obj : listar) {
+                m.addElement(obj);
+            }
+            jComboBox1.setModel(m);
+        }
+    }
 }

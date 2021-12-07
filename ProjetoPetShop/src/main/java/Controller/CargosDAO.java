@@ -109,7 +109,7 @@ public class CargosDAO {
         }
     }
 
-    public boolean PesquisarProId(String id) {
+    public Cargos PesquisarProId(String id) {
         try {
 
             String SQL = "select * from cargos where id=?";
@@ -121,12 +121,13 @@ public class CargosDAO {
                 Cargos cg = new Cargos();
                 cg.setId(rs.getInt("id"));
                 cg.setNome(rs.getString("nome"));
+                return cg;
             }
-            return true;
+            return null;
 
         } catch (Exception e) {
             System.err.println("ERRO:" + e.getMessage());
-            return false;
+            return null;
         } finally {
             Conexao.Desconectar(con);
         }

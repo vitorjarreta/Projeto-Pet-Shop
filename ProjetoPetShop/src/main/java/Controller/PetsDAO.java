@@ -117,7 +117,7 @@ public class PetsDAO {
         }
     }
     
-    public boolean PesquisarProId(String id) {
+    public Pets  PesquisarProId(String id) {
         try {
 
             String SQL = "select * from pets where id=?";
@@ -131,12 +131,13 @@ public class PetsDAO {
                 pt.setNome(rs.getString("nome"));
                 pt.setRaca(rs.getString("raca"));
                 pt.setId_clientes(rs.getInt("id_clientes"));
+                return pt;
             }
-            return true;
+            return null;
 
         } catch (Exception e) {
             System.err.println("ERRO:" + e.getMessage());
-            return false;
+            return null;
         } finally {
             Conexao.Desconectar(con);
         }

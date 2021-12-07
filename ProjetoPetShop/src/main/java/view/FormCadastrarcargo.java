@@ -4,17 +4,33 @@
  */
 package View;
 
+import Controller.CargosDAO;
+import Model.Cargos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author felipe.guerrera
  */
 public class FormCadastrarcargo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCadastrarcargo
-     */
+    private String id;
+    private boolean atualizar;
+
     public FormCadastrarcargo() {
         initComponents();
+        ConfigurarForm();
+    }
+
+    public FormCadastrarcargo(String id, boolean atualizar) {
+        this();
+        this.id = id;
+        this.atualizar = atualizar;
+
+        Cargos car = new CargosDAO().PesquisarProId(id);
+        if (car != null) {
+            txt_novocargo.setText(car.getNome());
+        }
     }
 
     /**
@@ -53,6 +69,11 @@ public class FormCadastrarcargo extends javax.swing.JFrame {
         bt_cadastrarnovocargo.setForeground(new java.awt.Color(255, 255, 0));
         bt_cadastrarnovocargo.setText("Cadastrar Novo Cargo");
         bt_cadastrarnovocargo.setBorder(null);
+        bt_cadastrarnovocargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarnovocargoActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 255));
         jButton2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -140,7 +161,38 @@ public class FormCadastrarcargo extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void bt_cadastrarnovocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarnovocargoActionPerformed
+        Cargos car = new Cargos();
+        car.setNome(txt_novocargo.getText());
+
+        CargosDAO cardao = new CargosDAO();
+
+        boolean resultado = false;
+
+        if (txt_novocargo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo não pode estra vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            if (atualizar = false) {
+                resultado = cardao.inserir(car);
+            } else {
+                car.setId(Integer.parseInt(id));
+                resultado = cardao.atualizar(car);
+            }
+        }
+
+        if (resultado == true) {
+            JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        txt_novocargo.setText("");
+        txt_novocargo.requestFocus();
+    }//GEN-LAST:event_bt_cadastrarnovocargoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,4 +238,10 @@ public class FormCadastrarcargo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_novocargo;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm() {
+        setTitle("Cadastarar Cargo");
+        setResizable(false);
+        txt_novocargo.requestFocus();
+    }
 }

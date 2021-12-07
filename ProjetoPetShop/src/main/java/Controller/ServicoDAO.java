@@ -150,7 +150,7 @@ public class ServicoDAO {
         }
     }
     
-    public boolean PesquisarProId(String id) {
+    public Servicos PesquisarProId(String id) {
         try {
 
             String SQL = "select * from servicos where id=?";
@@ -165,12 +165,13 @@ public class ServicoDAO {
                 srv.setDescricao(rs.getString("descricao"));
                 srv.setPreco(rs.getDouble("preco"));
                 srv.setId_funcionarios(rs.getInt("id_funcionarios"));;
+                return srv;
             }
-            return true;
+            return null;
 
         } catch (Exception e) {
             System.err.println("ERRO:" + e.getMessage());
-            return false;
+            return null;
         } finally {
             Conexao.Desconectar(con);
         }

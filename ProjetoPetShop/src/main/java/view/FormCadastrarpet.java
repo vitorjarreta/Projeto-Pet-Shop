@@ -4,17 +4,35 @@
  */
 package View;
 
+import Controller.PetsDAO;
+import Model.Pets;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author felipe.guerrera
  */
 public class FormCadastrarpet extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FormCadastrarpet
-     */
+    
+    private String id;
+    private boolean atualizar = false;
+    
     public FormCadastrarpet() {
         initComponents();
+        ConfigurarForm();
+    }
+    
+    public FormCadastrarpet(String id, boolean atualizar) {
+        this();
+        this.id = id;
+        this.atualizar = atualizar;
+        
+        Pets pt = new PetsDAO().PesquisarProId(id);
+        if (pt != null) {
+            nome_pet.setText(pt.getNome());
+            raca_pet.setText(pt.getRaca());
+        }
+        
     }
 
     /**
@@ -81,6 +99,11 @@ public class FormCadastrarpet extends javax.swing.JFrame {
         bt_cadastrarpet.setForeground(new java.awt.Color(255, 255, 0));
         bt_cadastrarpet.setText("Cadastrar Pet");
         bt_cadastrarpet.setBorder(null);
+        bt_cadastrarpet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrarpetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,7 +180,33 @@ public class FormCadastrarpet extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bt_cadastrarpetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarpetActionPerformed
+        Pets pt = new Pets();
+        pt.setNome(nome_pet.getText());
+        pt.setRaca(raca_pet.getText());
+        
+        PetsDAO ptdao = new PetsDAO();
+        boolean resultado = false;
+        
+        if (nome_pet.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nO Campo Nome não pode estar vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizar = false) {
+                resultado = ptdao.inserir(pt);
+            } else {
+                resultado = ptdao.atualizar(pt);
+            }
+        }
+        
+        if (resultado == true) {
+            JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bt_cadastrarpetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,4 +254,11 @@ public class FormCadastrarpet extends javax.swing.JFrame {
     private javax.swing.JTextField nome_pet;
     private javax.swing.JTextField raca_pet;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm() {
+        setTitle("Cadastrar Pet");
+        setResizable(false);
+        nome_pet.requestFocus();
+    }
+    
 }

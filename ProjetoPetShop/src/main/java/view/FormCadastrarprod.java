@@ -4,6 +4,8 @@
  */
 package View;
 
+import Model.Produtos;
+
 /**
  *
  * @author felipe.guerrera
@@ -200,7 +202,8 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastro_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastro_produtoActionPerformed
-        // TODO add your handling code here:
+        Produtos pro = new Produtos();
+        pro.setNome(nome_produto.getText());
     }//GEN-LAST:event_cadastro_produtoActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
@@ -210,6 +213,7 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     private void voltar_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar_menuActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltar_menuActionPerformed
 
     /**
@@ -263,4 +267,10 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     private javax.swing.JButton sair;
     private javax.swing.JButton voltar_menu;
     // End of variables declaration//GEN-END:variables
+    
+    private void ConfigurarForm(){
+        setTitle("Cadastrar Produto");
+        setResizable(false);
+        nome_produto.requestFocus();
+   }
 }
