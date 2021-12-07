@@ -32,13 +32,13 @@ public class FormCadastrarprod extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         nome_produto = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        codigo_produto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        valor_produto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo_qtdproduto = new javax.swing.JComboBox<>();
         sair = new javax.swing.JButton();
-        cadastro_produto = new javax.swing.JButton();
+        bt_cadastroproduto = new javax.swing.JButton();
         voltar_menu = new javax.swing.JButton();
 
         jLabel5.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -63,22 +63,22 @@ public class FormCadastrarprod extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setText("Valor Unitário:");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        codigo_produto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 0));
         jLabel7.setText("Nome do Produto:");
 
-        jTextField2.setText("R$");
+        valor_produto.setText("R$");
 
         jLabel8.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 0));
         jLabel8.setText("Quantidade:");
 
-        jComboBox1.setFont(new java.awt.Font("Ravie", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        combo_qtdproduto.setFont(new java.awt.Font("Ravie", 1, 12)); // NOI18N
+        combo_qtdproduto.setForeground(new java.awt.Color(0, 0, 255));
+        combo_qtdproduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        combo_qtdproduto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         sair.setBackground(new java.awt.Color(0, 0, 255));
         sair.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -91,14 +91,14 @@ public class FormCadastrarprod extends javax.swing.JFrame {
             }
         });
 
-        cadastro_produto.setBackground(new java.awt.Color(0, 0, 255));
-        cadastro_produto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        cadastro_produto.setForeground(new java.awt.Color(255, 255, 0));
-        cadastro_produto.setText("Cadastrar Produto");
-        cadastro_produto.setBorder(null);
-        cadastro_produto.addActionListener(new java.awt.event.ActionListener() {
+        bt_cadastroproduto.setBackground(new java.awt.Color(0, 0, 255));
+        bt_cadastroproduto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
+        bt_cadastroproduto.setForeground(new java.awt.Color(255, 255, 0));
+        bt_cadastroproduto.setText("Cadastrar Produto");
+        bt_cadastroproduto.setBorder(null);
+        bt_cadastroproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastro_produtoActionPerformed(evt);
+                bt_cadastroprodutoActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class FormCadastrarprod extends javax.swing.JFrame {
                         .addComponent(nome_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(codigo_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(75, 75, 75)
@@ -142,15 +142,19 @@ public class FormCadastrarprod extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+=======
+                                .addComponent(valor_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 82a12a9b06398ae3972fb71f3cb1ed7d38d26777
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(combo_qtdproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel7)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(sair)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cadastro_produto)
+                                    .addComponent(bt_cadastroproduto)
                                     .addGap(71, 71, 71))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(voltar_menu)
@@ -168,19 +172,19 @@ public class FormCadastrarprod extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(codigo_produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valor_produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_qtdproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sair)
-                    .addComponent(cadastro_produto)
+                    .addComponent(bt_cadastroproduto)
                     .addComponent(voltar_menu))
                 .addContainerGap())
         );
@@ -199,9 +203,9 @@ public class FormCadastrarprod extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cadastro_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastro_produtoActionPerformed
+    private void bt_cadastroprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastroprodutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastro_produtoActionPerformed
+    }//GEN-LAST:event_bt_cadastroprodutoActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         this.dispose();
@@ -248,8 +252,9 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cadastro_produto;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton bt_cadastroproduto;
+    private javax.swing.JTextField codigo_produto;
+    private javax.swing.JComboBox<String> combo_qtdproduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -257,10 +262,9 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField nome_produto;
     private javax.swing.JButton sair;
+    private javax.swing.JTextField valor_produto;
     private javax.swing.JButton voltar_menu;
     // End of variables declaration//GEN-END:variables
 }
