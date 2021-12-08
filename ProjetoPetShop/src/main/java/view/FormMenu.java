@@ -145,6 +145,11 @@ public class FormMenu extends javax.swing.JFrame {
         bt_agendamento.setForeground(new java.awt.Color(255, 255, 0));
         bt_agendamento.setText("Agendamento");
         bt_agendamento.setBorder(null);
+        bt_agendamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_agendamentoActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 255));
         jButton1.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -287,6 +292,12 @@ public class FormMenu extends javax.swing.JFrame {
         fun.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_agendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agendamentoActionPerformed
+        FormAgendamento fun = new FormAgendamento();
+        fun.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bt_agendamentoActionPerformed
 
     /**
      * @param args the command line arguments

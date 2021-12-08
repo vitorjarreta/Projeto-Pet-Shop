@@ -42,7 +42,7 @@ public class FormVerserv extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_produtos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        pesquisar_produto = new javax.swing.JTextField();
+        pesquisar_servico = new javax.swing.JTextField();
         bt_pesquisarproduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +99,7 @@ public class FormVerserv extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Pesquisar Serviço:");
 
-        pesquisar_produto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        pesquisar_servico.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
         bt_pesquisarproduto.setBackground(new java.awt.Color(0, 0, 255));
         bt_pesquisarproduto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -129,7 +129,7 @@ public class FormVerserv extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pesquisar_servico, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
@@ -149,7 +149,7 @@ public class FormVerserv extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pesquisar_servico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_pesquisarproduto)
                 .addGap(18, 18, 18)
@@ -204,6 +204,8 @@ public class FormVerserv extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabela_produtosMouseClicked
 
+    }                                        
+
     /**
      * @param args the command line arguments
      */
@@ -249,7 +251,7 @@ public class FormVerserv extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField pesquisar_produto;
+    private javax.swing.JTextField pesquisar_servico;
     private javax.swing.JTable tabela_produtos;
     private javax.swing.JPanel txt_pesquisarproduto;
     // End of variables declaration//GEN-END:variables
