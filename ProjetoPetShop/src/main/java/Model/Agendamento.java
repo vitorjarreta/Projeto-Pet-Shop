@@ -6,15 +6,25 @@ public class Agendamento {
     private int id_servicos;
     private int id_clientes;
     private String data;
+    private int id_pets;
 
     public Agendamento() {
     }
 
-    public Agendamento(int id, int id_servicos, int id_clientes, String data) {
+    public Agendamento(int id, int id_servicos, int id_clientes, String data, int id_pets) {
         this.id = id;
         this.id_servicos = id_servicos;
         this.id_clientes = id_clientes;
         this.data = data;
+        this.id_pets = id_pets;
+    }
+
+    public int getId_pets() {
+        return id_pets;
+    }
+
+    public void setId_pets(int id_pets) {
+        this.id_pets = id_pets;
     }
 
     public int getId() {

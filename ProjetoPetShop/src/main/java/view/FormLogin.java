@@ -180,9 +180,10 @@ public class FormLogin extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE
             );
         } else {
-            if (new UsuarioDAO().Logar(u)) {
-                FormCadastrofunc form = new FormCadastrofunc();
+            if (new UsuarioDAO().login(u)) {
+                FormMenu form = new FormMenu();
                 form.setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null,
                         "ERRO: Usuário ou Senha inválidos",

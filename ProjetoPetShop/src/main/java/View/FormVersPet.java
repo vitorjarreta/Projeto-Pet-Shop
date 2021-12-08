@@ -4,9 +4,11 @@
  */
 package View;
 
+import Controller.ClientesDAO;
 import Controller.FuncionariosDAO;
-import Controller.ServicosDAO;
-import Model.Servicos;
+import Controller.PetsDAO;
+import Model.Pedidos;
+import Model.Pets;
 import java.text.DecimalFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author felipe.guerrera
  */
-public class FormVerserv extends javax.swing.JFrame {
+public class FormVersPet extends javax.swing.JFrame {
 
     /**
      * Creates new form FormVerprodutos
      */
-    public FormVerserv() {
+    public FormVersPet() {
         initComponents();
         configurarForm();
     }
@@ -51,7 +53,7 @@ public class FormVerserv extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel1.setText("Vizualizar Serviços");
+        jLabel1.setText("Vizualizar Produtos");
 
         jButton1.setBackground(new java.awt.Color(0, 0, 255));
         jButton1.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -97,7 +99,7 @@ public class FormVerserv extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(0, 0, 255));
         jLabel2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel2.setText("Pesquisar Serviço:");
+        jLabel2.setText("Pesquisar produto:");
 
         pesquisar_produto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
@@ -124,13 +126,13 @@ public class FormVerserv extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
+                        .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,9 +189,9 @@ public class FormVerserv extends javax.swing.JFrame {
 
     private void bt_pesquisarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pesquisarprodutoActionPerformed
         if (pesquisar_produto.getText().isEmpty()) {
-            preencherTable(new ServicosDAO().listar());
+            preencherTable(new PetsDAO().listar());
         } else {
-            preencherTable(new ServicosDAO().PesquisarNome(pesquisar_produto.getText()));
+            preencherTable(new PetsDAO().PesquisarNome(pesquisar_produto.getText()));
         }
     }//GEN-LAST:event_bt_pesquisarprodutoActionPerformed
 
@@ -198,7 +200,7 @@ public class FormVerserv extends javax.swing.JFrame {
             int linha = tabela_produtos.getSelectedRow();
             String id = tabela_produtos.getValueAt(linha, 0).toString();
             
-            FormCadastrarserv f = new FormCadastrarserv(id,1);
+            FormCadastrarpet f = new FormCadastrarpet(id,1);
             f.setVisible(true);
             this.dispose();
         }
@@ -221,14 +223,18 @@ public class FormVerserv extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormVerserv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVersPet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormVerserv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVersPet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormVerserv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVersPet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormVerserv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormVersPet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -237,7 +243,7 @@ public class FormVerserv extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormVerserv().setVisible(true);
+                new FormVersPet().setVisible(true);
             }
         });
     }
@@ -255,10 +261,10 @@ public class FormVerserv extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarForm() {
-        this.setTitle("Servicos cadastrados");
+        this.setTitle("Pets cadastrados");
         this.setResizable(false);
         configurarTable();
-        preencherTable(new ServicosDAO().listar());
+        preencherTable(new PetsDAO().listar());
     }
 
     private void configurarTable() {
@@ -271,24 +277,22 @@ public class FormVerserv extends javax.swing.JFrame {
         
         m.addColumn("ID");
         m.addColumn("Nome");
-        m.addColumn("Descrição");
-        m.addColumn("Preco");
-        m.addColumn("Funcionário");
+        m.addColumn("Raça");
+        m.addColumn("Dono");
         tabela_produtos.setModel(m);
     }
     
-    private void preencherTable(List<Servicos> lista){
+    private void preencherTable(List<Pets> lista){
         if (lista!=null) {
             if (lista.size()>0) {
                 configurarTable();
                 DefaultTableModel m2 = (DefaultTableModel)tabela_produtos.getModel();
-                for(Servicos obj: lista){
+                for(Pets obj: lista){
                     m2.addRow(new Object[]{
                         obj.getId(),
                         obj.getNome(),
-                        obj.getDescricao(),
-                        new DecimalFormat("R$ #,##0.00").format(obj.getPreco()),
-                        new FuncionariosDAO().pesquisarPorID(Integer.toString(obj.getId_funcionarios())).getNome()
+                        obj.getRaca(),
+                        new ClientesDAO().pesquisarPorID(Integer.toString(obj.getId_clientes())).getNome()
                     });
                 }
                 tabela_produtos.setModel(m2);

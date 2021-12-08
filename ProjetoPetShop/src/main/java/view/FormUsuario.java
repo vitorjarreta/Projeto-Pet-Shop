@@ -2,7 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package View;
+
+import Controller.UsuarioDAO;
+import Model.Usuario;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,6 +70,11 @@ public class FormUsuario extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setText("Cadastrar Usuário");
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 255));
         jButton2.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -167,6 +177,36 @@ public class FormUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Usuario u = new Usuario();
+        u.setUsuario(cadastro_usuario.getText());
+
+        /*String senha = new String(cadastro_senha.getPassword());
+        String senha_confirmar = new String(confirmacao_senha.getPassword());*/
+        if (Arrays.equals(cadastro_senha.getPassword(), confirmacao_senha.getPassword())) {
+            u.setSenha(new String(confirmacao_senha.getPassword()));
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nAs Senhas não são as mesmas", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        UsuarioDAO udao = new UsuarioDAO();
+        int resultado = -1;
+
+        if (cadastro_usuario.getText().isEmpty() || cadastro_usuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs campos não podem estra vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            resultado = udao.Cadastrar(u);
+        }
+
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Cadastro concluído com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluír a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,4 +255,11 @@ public class FormUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm() {
+        setTitle("Cadastar");
+        setResizable(false);
+        cadastro_usuario.requestFocus();
+    }
+
 }

@@ -4,9 +4,15 @@
  */
 package View;
 
+import Controller.ClientesDAO;
 import Controller.PetsDAO;
+import Model.Clientes;
 import Model.Pets;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -15,22 +21,30 @@ import javax.swing.JOptionPane;
 public class FormCadastrarpet extends javax.swing.JFrame {
     
     private String id;
-    private boolean atualizar = false;
+    private int atualizar = -1;
     
     public FormCadastrarpet() {
         initComponents();
         ConfigurarForm();
     }
     
-    public FormCadastrarpet(String id, boolean atualizar) {
+    public FormCadastrarpet(String id, int atualizar) {
         this();
         this.id = id;
         this.atualizar = atualizar;
         
-        Pets pt = new PetsDAO().PesquisarProId(id);
+        Pets pt = new PetsDAO().pesquisarPorID(id);
         if (pt != null) {
             nome_pet.setText(pt.getNome());
             raca_pet.setText(pt.getRaca());
+            DefaultComboBoxModel m = (DefaultComboBoxModel)jComboBox1.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Clientes cli = (Clientes)m.getElementAt(i);
+                if(cli.getId() == pt.getId_clientes()){
+                    jComboBox1.setSelectedIndex(i);
+                    break;
+                }
+            }
         }
         
     }
@@ -202,21 +216,24 @@ public class FormCadastrarpet extends javax.swing.JFrame {
         Pets pt = new Pets();
         pt.setNome(nome_pet.getText());
         pt.setRaca(raca_pet.getText());
+        Clientes cli = (Clientes)jComboBox1.getSelectedItem();
+        pt.setId_clientes(cli.getId());
         
         PetsDAO ptdao = new PetsDAO();
-        boolean resultado = false;
+        int resultado = -1;
         
         if (nome_pet.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ERRO:\nO Campo Nome não pode estar vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (atualizar = false) {
+            if (atualizar == -1) {
                 resultado = ptdao.inserir(pt);
             } else {
+                pt.setId(Integer.parseInt(id));
                 resultado = ptdao.atualizar(pt);
             }
         }
         
-        if (resultado == true) {
+        if (resultado == 1) {
             JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -276,6 +293,15 @@ public class FormCadastrarpet extends javax.swing.JFrame {
         setTitle("Cadastrar Pet");
         setResizable(false);
         nome_pet.requestFocus();
+        
+        List<Clientes> lista = new ClientesDAO().listar();
+        if(lista!=null){
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for(Clientes obj: lista){
+                m.addElement(obj.getNome());
+            }
+            jComboBox1.setModel(m);
+        }
     }
     
 }

@@ -4,7 +4,9 @@
  */
 package View;
 
+import Controller.ProdutosDAO;
 import Model.Produtos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +14,26 @@ import Model.Produtos;
  */
 public class FormCadastrarprod extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCadastrarprod
-     */
+    private String id;
+    private int atualizacao = -1;
+
     public FormCadastrarprod() {
         initComponents();
+    }
+
+    public FormCadastrarprod(String id, int atualizacao) {
+        this();
+        this.id = id;
+        this.atualizacao = atualizacao;
+
+        Produtos pro = new ProdutosDAO().pesquisarPorID(id);
+        if (pro != null) {
+            nome_produto.setText(pro.getNome());
+            descricao_produto.setText(pro.getDescricao());
+            qtd_produto.setText(Integer.toString(pro.getQuantidade()));
+            jTextField2.setText(Double.toString(pro.getPreco()));
+
+        }
     }
 
     /**
@@ -72,7 +89,6 @@ public class FormCadastrarprod extends javax.swing.JFrame {
         jLabel7.setText("Nome do Produto:");
 
         jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextField2.setText("R$");
 
         jLabel8.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 0));
@@ -206,6 +222,32 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     private void cadastro_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastro_produtoActionPerformed
         Produtos pro = new Produtos();
         pro.setNome(nome_produto.getText());
+        pro.setDescricao(descricao_produto.getText());
+        pro.setQuantidade(Integer.parseInt(qtd_produto.getText()));
+        pro.setPreco(Double.parseDouble(jTextField2.getText()));
+
+        ProdutosDAO prodao = new ProdutosDAO();
+        int resultado = -1;
+        
+        
+        if (nome_produto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizacao == -1) {
+                resultado = prodao.inserir(pro);
+            } else {
+                pro.setId(Integer.parseInt(id));
+                resultado = prodao.atualizar(pro);
+            }
+
+        }
+
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Operação conccluída com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_cadastro_produtoActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
@@ -269,10 +311,10 @@ public class FormCadastrarprod extends javax.swing.JFrame {
     private javax.swing.JButton sair;
     private javax.swing.JButton voltar_menu;
     // End of variables declaration//GEN-END:variables
-    
-    private void ConfigurarForm(){
+
+    private void ConfigurarForm() {
         setTitle("Cadastrar Produto");
         setResizable(false);
         nome_produto.requestFocus();
-   }
+    }
 }

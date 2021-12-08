@@ -4,17 +4,70 @@
  */
 package View;
 
+import Controller.AgendamentoDAO;
+import Controller.ClientesDAO;
+import Controller.PetsDAO;
+import Controller.ServicosDAO;
+import Model.Agendamento;
+import Model.Clientes;
+import Model.Pets;
+import Model.Servicos;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author felipe.guerrera
  */
 public class FormAgendamento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormAgendamento
-     */
+    private String id;
+    private int atualizacao =-1;
+    
     public FormAgendamento() {
         initComponents();
+        ConfigurarForm();
+    }
+    
+    public FormAgendamento(String id, int atualizacao){
+        this();
+        this.id = id;
+        this.atualizacao = atualizacao;
+        
+        Agendamento agen = new AgendamentoDAO().pesquisarPorID(id);
+        if(agen != null){
+            txt_data.setText(agen.getData());
+            
+        }
+        
+        //selecionar a Categoria
+            DefaultComboBoxModel m = (DefaultComboBoxModel)combo_cliente.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Clientes cli = (Clientes)m.getElementAt(i);
+                if (cli.getId() == agen.getId_clientes()){
+                    combo_cliente.setSelectedIndex(i);
+                    break;
+                }
+            }
+            
+            DefaultComboBoxModel m2 = (DefaultComboBoxModel)combo_pet.getModel();
+            for (int i = 0; i < m2.getSize(); i++) {
+                Pets pt = (Pets)m2.getElementAt(i);
+                if (pt.getId() == agen.getId_pets()){
+                    combo_pet.setSelectedIndex(i);
+                    break;
+                }
+            }
+            
+            DefaultComboBoxModel m3 = (DefaultComboBoxModel)combo_servico.getModel();
+            for (int i = 0; i < m3.getSize(); i++) {
+                Servicos ser = (Servicos)m3.getElementAt(i);
+                if (ser.getId() == agen.getId_servicos()){
+                    combo_servico.setSelectedIndex(i);
+                    break;
+                }
+            }
     }
 
     /**
@@ -52,8 +105,6 @@ public class FormAgendamento extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Serviço:");
 
-        combo_servico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Data:");
@@ -61,8 +112,6 @@ public class FormAgendamento extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("Cliente:");
-
-        combo_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 0));
@@ -97,6 +146,11 @@ public class FormAgendamento extends javax.swing.JFrame {
         bt_agendar.setForeground(new java.awt.Color(255, 255, 0));
         bt_agendar.setText("Agendar");
         bt_agendar.setBorder(null);
+        bt_agendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_agendarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,6 +235,40 @@ public class FormAgendamento extends javax.swing.JFrame {
         fun.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void bt_agendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_agendarActionPerformed
+        Agendamento agen = new Agendamento();
+        Servicos ser = (Servicos)combo_servico.getSelectedItem();
+        Clientes cli = (Clientes)combo_cliente.getSelectedItem();
+        Pets pt = (Pets)combo_pet.getSelectedItem();
+        
+        agen.setData(txt_data.getText());
+        agen.setId_clientes(cli.getId());
+        agen.setId_servicos(ser.getId());
+        agen.setId_pets(pt.getId());
+        
+        AgendamentoDAO agendao = new AgendamentoDAO();
+        int resultado =-1;
+        
+         if (txt_data.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizacao == -1) {
+                resultado = agendao.inserir(agen);
+            } else {
+                agen.setId(Integer.parseInt(id));
+                resultado = agendao.atualizar(agen);
+            }
+
+        }
+
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Operação conccluída com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_bt_agendarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -231,4 +319,38 @@ public class FormAgendamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_data;
     // End of variables declaration//GEN-END:variables
+
+    private void ConfigurarForm(){
+        setTitle("Agendamento");
+        setResizable(false);
+        txt_data.requestFocus();
+        
+        List<Servicos> lista = new ServicosDAO().listar();
+        if(lista!= null){
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for(Servicos ser: lista){
+                m.addElement(ser.getNome());
+            }
+            combo_servico.setModel(m);
+        }
+        
+        List<Pets> lista2 = new PetsDAO().listar();
+        if(lista2!= null){
+            DefaultComboBoxModel m2 = new DefaultComboBoxModel();
+            for(Pets pt: lista2){
+                m2.addElement(pt.getNome());
+            }
+            combo_pet.setModel(m2);
+        }
+        
+        List<Clientes> lista3 = new ClientesDAO().listar();
+        if(lista3!= null){
+            DefaultComboBoxModel m3 = new DefaultComboBoxModel();
+            for(Clientes cli: lista3){
+                m3.addElement(cli.getNome());
+            }
+            combo_cliente.setModel(m3);
+        }
+        
+    }
 }

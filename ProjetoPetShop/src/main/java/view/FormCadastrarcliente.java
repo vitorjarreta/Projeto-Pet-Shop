@@ -4,7 +4,9 @@
  */
 package View;
 
+import Controller.ClientesDAO;
 import Model.Clientes;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +14,25 @@ import Model.Clientes;
  */
 public class FormCadastrarcliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCadastrarcliente
-     */
+    private String id;
+    private int atualizacao =-1;
+    
     public FormCadastrarcliente() {
         initComponents();
+    }
+    
+    public FormCadastrarcliente(String id, int atualizacao){
+        this();
+        this.id = id;
+        this.atualizacao = atualizacao;
+        
+        Clientes cli = new ClientesDAO().pesquisarPorID(id);
+        if(cli!= null){
+            nome_cliente.setText(cli.getNome());
+            email_cliente.setText(cli.getEmail());
+            cpf_cliente.setText(cli.getCpf());
+            telefone_cliente.setText(cli.getTelefone());
+        }
     }
 
     /**
@@ -202,7 +218,33 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Clientes cli = new Clientes();
+        cli.setNome(nome_cliente.getText());
+        cli.setEmail(email_cliente.getText());
+        cli.setCpf(cpf_cliente.getText());
+        cli.setTelefone(telefone_cliente.getText());
         
+        ClientesDAO clidao = new ClientesDAO();
+        int resultado = -1;
+        
+        if (nome_cliente.getText().isEmpty() || email_cliente.getText().isEmpty() || cpf_cliente.getText().isEmpty()|| telefone_cliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizacao == -1) {
+                resultado = clidao.inserir(cli);
+            } else {
+                cli.setId(Integer.parseInt(id));
+                resultado = clidao.atualizar(cli);
+            }
+
+        }
+
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Operação conccluída com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -261,5 +303,6 @@ public class FormCadastrarcliente extends javax.swing.JFrame {
     public void ConfigurarForm(){
         setTitle("Cadastro de Cliente");
         setResizable(false);
+        nome_cliente.requestFocus();
     }
 }

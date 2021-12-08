@@ -4,7 +4,7 @@
  */
 package View;
 
-import view.FormUsuario;
+import View.FormUsuario;
 
 /**
  *

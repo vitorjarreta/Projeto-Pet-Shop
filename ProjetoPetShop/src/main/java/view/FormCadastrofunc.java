@@ -5,8 +5,12 @@
 package View;
 
 import Controller.CargosDAO;
+import Controller.FuncionariosDAO;
 import Model.Cargos;
+import Model.Funcionarios;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +18,36 @@ import java.util.List;
  */
 public class FormCadastrofunc extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormCadastro
-     */
+    private String id;
+    private int atualizacao = -1;
+
     public FormCadastrofunc() {
         initComponents();
+        ConfigurarForm();
+    }
+
+    public FormCadastrofunc(String id, int atualizacao) {
+        this();
+        this.id = id;
+        this.atualizacao = atualizacao;
+
+        Funcionarios fun = new FuncionariosDAO().pesquisarPorID(id);
+        if (fun != null) {
+            cadastro_nome.setText(fun.getNome());
+            cadastro_email.setText(fun.getEmail());
+            jTextField1.setText(Double.toString(fun.getSalario()));
+
+            DefaultComboBoxModel m = (DefaultComboBoxModel) jComboBox1.getModel();
+            for (int i = 0; i < m.getSize(); i++) {
+                Cargos cg = (Cargos) m.getElementAt(i);
+                if (cg.getId() == fun.getId_cargo()) {
+                    jComboBox1.setSelectedIndex(i);
+                    break;
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -76,6 +105,11 @@ public class FormCadastrofunc extends javax.swing.JFrame {
         bt_cadastro.setForeground(new java.awt.Color(255, 255, 0));
         bt_cadastro.setText("Cadastrar");
         bt_cadastro.setBorder(null);
+        bt_cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastroActionPerformed(evt);
+            }
+        });
 
         bt_fechar.setBackground(new java.awt.Color(0, 0, 255));
         bt_fechar.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
@@ -104,7 +138,6 @@ public class FormCadastrofunc extends javax.swing.JFrame {
         jLabel10.setText("Salário:");
 
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextField1.setText("R$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,6 +228,38 @@ public class FormCadastrofunc extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_bt_fecharActionPerformed
 
+    private void bt_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastroActionPerformed
+        Funcionarios fun = new Funcionarios();
+        fun.setNome(cadastro_nome.getText());
+        fun.setEmail(cadastro_email.getText());
+        fun.setSalario(Double.parseDouble(jTextField1.getText()));
+
+        Cargos cg = (Cargos) jComboBox1.getSelectedItem();
+        fun.setId_cargo(cg.getId());
+
+        FuncionariosDAO fundao = new FuncionariosDAO();
+        int resultado = -1;
+
+        if (cadastro_email.getText().isEmpty() || cadastro_nome.getText().isEmpty() || jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (atualizacao == -1) {
+                resultado = fundao.inserir(fun);
+            } else {
+                fun.setId(Integer.parseInt(id));
+                resultado = fundao.atualizar(fun);
+            }
+
+        }
+
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Operação conccluída com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_bt_cadastroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,12 +312,20 @@ public class FormCadastrofunc extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-    public void ConfigurarForm(){
+    public void ConfigurarForm() {
         this.setTitle("Cadastro");
         this.setResizable(false);
         cadastro_nome.requestFocus();
-        
-        List<Cargos> lista= new CargosDAO().listar();
+
+        List<Cargos> lista = new CargosDAO().listar();
+        if (lista != null) {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for (Cargos obj : lista) {
+                m.addElement(obj.getNome());
+            }
+            jComboBox1.setModel(m);
+        }
+
     }
 
 }

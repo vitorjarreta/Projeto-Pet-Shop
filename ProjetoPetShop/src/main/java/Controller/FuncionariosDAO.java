@@ -1,177 +1,160 @@
+//Classe FuncionárioDAO para as função entre objeto Funcionário
+//e tabela Funcionário criado no Postegree
 package Controller;
 
 import Model.Funcionarios;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionariosDAO {
-    
+
+    //Estabelecer conexão entre o banco de dados
     private final Connection con;
+
     private PreparedStatement cmd;
-    
+
     public FuncionariosDAO() {
         this.con = Conexao.conectar();
     }
-    
-    public boolean inserir(Funcionarios fun) {
+
+    //Função para inserir um novo obejto funcionário na tabela tb_funcionário
+    public int inserir(Funcionarios obj) {
         try {
-            String SQL = "insert into funcionarios"
-                    + "(nome,salario, email, id_cargos)"
-                    + "values (?,?,?,?)";
-            
-            cmd = con.prepareCall(SQL);
-            cmd.setString(1, fun.getNome());
-            cmd.setDouble(2, fun.getSalario());
-            cmd.setString(3, fun.getEmail());
-            cmd.setInt(4, fun.getId_cargo());
-            
-            ResultSet rs = cmd.executeQuery();
-            if (rs.next()) {
-                return true;
+            String SQL = "insert into funcionarios "
+                    + "(nome,email,salario,id_cargos) values (?,?,?,?)";
+
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, obj.getNome());
+            cmd.setString(2, obj.getEmail());
+            cmd.setDouble(3, obj.getSalario());
+            cmd.setInt(4, obj.getId_cargo());
+
+            if (cmd.executeUpdate() > 0) {
+                return 1;
             } else {
-                return false;
+                return -1;
             }
-            
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return false;
+
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return -1;
         } finally {
             Conexao.Desconectar(con);
         }
     }
-    
+
+    //Função para criar uma lista dos valores do tb_funcionário no banco de dados
     public List<Funcionarios> listar() {
         try {
             String SQL = "select * from funcionarios order by id";
-            
-            cmd = con.prepareCall(SQL);
-            
-            List<Funcionarios> lista = new ArrayList<>();
-            ResultSet rs = cmd.executeQuery();
-            while (rs.next()) {
-                Funcionarios fun = new Funcionarios();
-                fun.setId(rs.getInt("id"));
-                fun.setNome(rs.getString("nome"));
-                fun.setSalario(rs.getDouble("salario"));
-                fun.setEmail(rs.getString("email"));
-                fun.setId_cargo(rs.getInt("id_cargos"));
-                lista.add(fun);
-            }
-            return lista;
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return null;
-        } finally {
-            Conexao.Desconectar(con);
-        }
-    }
-    
-    public boolean atualizar(Funcionarios fun) {
-        try {
-            String SQL = "update funcionarios set"
-                    + "nome=?, salario=?, email=?, id_cargos=? where id=?";
-            
             cmd = con.prepareStatement(SQL);
-            cmd.setString(1, fun.getNome());
-            cmd.setDouble(2, fun.getSalario());
-            cmd.setString(3, fun.getEmail());
-            cmd.setInt(4, fun.getId_cargo());
-            
-            ResultSet rs = cmd.executeQuery();
-            if (rs.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return false;
-        } finally {
-            Conexao.Desconectar(con);
-        }
-    }
-    
-    public List<Funcionarios> pesquisarCargos(String id) {
-        try {
-                    
-            String SQL = "select * from funcionarios where id_cargo=?";
-            cmd = con.prepareCall(SQL);
-            cmd.setInt(1, Integer.parseInt(id));
-            
-            List<Funcionarios> lista = new ArrayList<>();
-            ResultSet rs = cmd.executeQuery();
-            while (rs.next()) {
-                Funcionarios fun = new Funcionarios();
-                fun.setId(rs.getInt("id"));
-                fun.setNome(rs.getString("nome"));
-                fun.setSalario(rs.getDouble("salario"));
-                fun.setEmail(rs.getString("email"));
-                fun.setId_cargo(rs.getInt("id_cargos"));
-                lista.add(fun);
-            }
-            return lista;
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return null;
-        } finally {
-            Conexao.Desconectar(con);
-        }
-    }
-    
-    public List<Funcionarios> pesquisarNome(String nome) {
-        try {
-                    
-            String SQL = "select * from funcionarios where nome ilike ? ordery id";
-            cmd = con.prepareCall(SQL);
-            cmd.setString(1, "%" + nome + "%");
-            
-            List<Funcionarios> lista = new ArrayList<>();
-            ResultSet rs = cmd.executeQuery();
-            while (rs.next()) {
-                Funcionarios fun = new Funcionarios();
-                fun.setId(rs.getInt("id"));
-                fun.setId(rs.getInt("nome"));
-                fun.setId(rs.getInt("salario"));
-                fun.setId(rs.getInt("email"));
-                fun.setId(rs.getInt("id_cargos"));
-                lista.add(fun);
-            }
-            return lista;
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return null;
-        } finally {
-            Conexao.Desconectar(con);
-        }
-    }
-    
-    public boolean PesquisarProId(String id){
-        try {
-                    
-            String SQL = "select * from funcionarios where id=?";
-            cmd = con.prepareCall(SQL);
-            cmd.setInt(1, Integer.parseInt(id));
-            
-            ResultSet rs = cmd.executeQuery();
-            while (rs.next()) {
-                Funcionarios fun = new Funcionarios();
-                fun.setId(rs.getInt("id"));
-                fun.setId(rs.getInt("nome"));
-                fun.setId(rs.getInt("email"));
-                fun.setId(rs.getInt("id_cargos"));
-            }
-            return true;
 
-        } catch (Exception e) {
-            System.err.println("ERRO:" + e.getMessage());
-            return false;
+            List<Funcionarios> lista = new ArrayList<>();
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Funcionarios funcio = new Funcionarios();
+                funcio.setId(rs.getInt("id"));
+                funcio.setId_cargo(rs.getInt("id_cargos"));
+                funcio.setNome(rs.getString("nome"));
+                funcio.setEmail(rs.getString("email"));
+                funcio.setSalario(rs.getDouble("salario"));
+                lista.add(funcio);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
         } finally {
             Conexao.Desconectar(con);
         }
     }
-    
-    
+
+    //Função para pesquisar a empresa a partir do id_empresa
+    // da tb]-funcionario e adicionar numa lista
+    public List<Funcionarios> PesquisarNome(String nome) {
+        try {
+            String SQL = "select * from funcionarios where nome ilike ?";
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, "%"+nome+"%");
+
+            List<Funcionarios> lista = new ArrayList<>();
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Funcionarios funcio = new Funcionarios();
+                funcio.setId(rs.getInt("id"));
+                funcio.setId_cargo(rs.getInt("id_cargos"));
+                funcio.setNome(rs.getString("nome"));
+                funcio.setEmail(rs.getString("email"));
+                funcio.setSalario(rs.getDouble("salario"));
+                lista.add(funcio);
+            }
+            return lista;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
+
+    //Função para pesquisar pelo id do Funcionários existentes na funcionarios
+    public Funcionarios pesquisarPorID(String id) {
+        try {
+            String SQL = "select * from funcionarios where id = ? order by id ";
+            cmd = con.prepareStatement(SQL);
+            cmd.setInt(1, Integer.parseInt(id));
+
+            //executar a consulta
+            ResultSet rs = cmd.executeQuery();
+            while (rs.next()) {
+                Funcionarios funcio = new Funcionarios();
+                funcio.setId(rs.getInt("id"));
+                funcio.setId_cargo(rs.getInt("id_cargos"));
+                funcio.setNome(rs.getString("nome"));
+                funcio.setEmail(rs.getString("email"));
+                funcio.setSalario(rs.getDouble("salario"));
+
+                return funcio;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return null;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
+
+    //Função para atulizar vaores existentes na tb_funcionário
+    public int atualizar(Funcionarios obj) {
+        try {
+            String SQL = "update funcionarios set nome=?, email =?, salario= ?, id_cargos=? where id =?";
+
+            cmd = con.prepareStatement(SQL);
+            cmd.setString(1, obj.getNome());
+            cmd.setString(2, obj.getEmail());
+            cmd.setDouble(3, obj.getSalario());
+            cmd.setInt(4, obj.getId_cargo());
+            cmd.setInt(5, obj.getId());
+
+            if (cmd.executeUpdate() > 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e.getMessage());
+            return -1;
+        } finally {
+            Conexao.Desconectar(con);
+        }
+    }
+
 }

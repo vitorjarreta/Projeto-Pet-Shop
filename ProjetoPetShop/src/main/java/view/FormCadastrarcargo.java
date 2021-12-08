@@ -14,9 +14,23 @@ import javax.swing.JOptionPane;
  */
 public class FormCadastrarcargo extends javax.swing.JFrame {
 
+    private String id;
+    private int atualizacao = -1;
+
     public FormCadastrarcargo() {
         initComponents();
         ConfigurarForm();
+    }
+    
+    public FormCadastrarcargo(String id, int atualizacao){
+        this();
+        this.id= id;
+        this.atualizacao = atualizacao;
+        
+        Cargos cg = new CargosDAO().pesquisarPorID(id);
+        if(cg != null){
+            txt_novocargo.setText(cg.getNome());
+        }
     }
 
     /**
@@ -151,28 +165,30 @@ public class FormCadastrarcargo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bt_cadastrarnovocargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarnovocargoActionPerformed
-        Cargos car = new Cargos();
-        car.setNome(txt_novocargo.getText());
-
-        CargosDAO cardao = new CargosDAO();
-
-        boolean resultado = false;
-
+        Cargos cg = new Cargos();
+        cg.setNome(txt_novocargo.getText());
+        
+        CargosDAO cgdao = new CargosDAO();
+        int resultado = -1;
+        
         if (txt_novocargo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo não pode estra vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
-
+            JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
         } else {
-            resultado = cardao.inserir(car);
+            if (atualizacao == -1) {
+                resultado = cgdao.inserir(cg);
+            } else {
+                cg.setId(Integer.parseInt(id));
+                resultado = cgdao.atualizar(cg);
+            }
+
         }
 
-        if (resultado == true) {
-            JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
+        if (resultado == 1) {
+            JOptionPane.showMessageDialog(null, "Operação conccluída com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
-        }
 
-        txt_novocargo.setText("");
-        txt_novocargo.requestFocus();
+        }
     }//GEN-LAST:event_bt_cadastrarnovocargoActionPerformed
 
     /**

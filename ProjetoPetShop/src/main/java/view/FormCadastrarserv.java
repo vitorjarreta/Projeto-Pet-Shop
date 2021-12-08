@@ -5,13 +5,14 @@
 package View;
 
 import Controller.FuncionariosDAO;
-import Controller.ServicoDAO;
+import Controller.ServicosDAO;
 import Model.Funcionarios;
 import Model.Servicos;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -20,19 +21,19 @@ import javax.swing.JOptionPane;
 public class FormCadastrarserv extends javax.swing.JFrame {
 
     private String id;
-    private boolean atualizar = false;
+    private int atualizar = -1;
 
     public FormCadastrarserv() {
         initComponents();
         ConfigurarForm();
     }
 
-    public FormCadastrarserv(String id, boolean atualizar) {
+    public FormCadastrarserv(String id, int atualizar) {
         this();
         this.id = id;
         this.atualizar = atualizar;
 
-        Servicos ser = new ServicoDAO().PesquisarProId(id);
+        Servicos ser = new ServicosDAO().pesquisarPorID(id);
         if (ser != null) {
             jTextField1.setText(ser.getNome());
             jTextField2.setText(ser.getDescricao());
@@ -245,20 +246,20 @@ public class FormCadastrarserv extends javax.swing.JFrame {
         Funcionarios fun = (Funcionarios) jComboBox1.getSelectedItem();
         ser.setId_funcionarios(fun.getId());
 
-        ServicoDAO serdao = new ServicoDAO();
-        boolean resultado = false;
+        ServicosDAO serdao = new ServicosDAO();
+        int resultado = -1;
 
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "ERRO:\nOs Campos Nome e Preço não podem estar vazios", "ERRO", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (atualizar = false) {
+            if (atualizar == -1) {
                 resultado = serdao.inserir(ser);
             } else {
                 resultado = serdao.atualizar(ser);
             }
         }
 
-        if (resultado == true) {
+        if (resultado == 1) {
             JOptionPane.showMessageDialog(null, "SUCESSO:\nOperação realziada com sucesso", "Concluído", JOptionPane.PLAIN_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir a operação", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -331,7 +332,7 @@ public class FormCadastrarserv extends javax.swing.JFrame {
         if (listar != null) {
             DefaultComboBoxModel m = new DefaultComboBoxModel();
             for (Funcionarios obj : listar) {
-                m.addElement(obj);
+                m.addElement(obj.getNome());
             }
             jComboBox1.setModel(m);
         }

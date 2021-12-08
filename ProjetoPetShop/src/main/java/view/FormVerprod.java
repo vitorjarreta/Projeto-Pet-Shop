@@ -4,6 +4,14 @@
  */
 package View;
 
+import Controller.ProdutosDAO;
+import Model.Pedidos;
+import Model.Produtos;
+import java.text.DecimalFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author felipe.guerrera
@@ -15,6 +23,7 @@ public class FormVerprod extends javax.swing.JFrame {
      */
     public FormVerprod() {
         initComponents();
+        configurarForm();
     }
 
     /**
@@ -34,11 +43,7 @@ public class FormVerprod extends javax.swing.JFrame {
         tabela_produtos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         pesquisar_produto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        pesquisar_vlrproduto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         bt_pesquisarproduto = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +87,11 @@ public class FormVerprod extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabela_produtos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabela_produtosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela_produtos);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 255));
@@ -91,25 +101,16 @@ public class FormVerprod extends javax.swing.JFrame {
 
         pesquisar_produto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel3.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel3.setText("Valor do Produto:");
-
-        pesquisar_vlrproduto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-
-        jLabel4.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel4.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel4.setText("Quantidade do produto:");
-
         bt_pesquisarproduto.setBackground(new java.awt.Color(0, 0, 255));
         bt_pesquisarproduto.setFont(new java.awt.Font("Ravie", 1, 14)); // NOI18N
         bt_pesquisarproduto.setForeground(new java.awt.Color(255, 255, 0));
         bt_pesquisarproduto.setText("Pesquisar");
         bt_pesquisarproduto.setBorder(null);
-
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        bt_pesquisarproduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_pesquisarprodutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txt_pesquisarprodutoLayout = new javax.swing.GroupLayout(txt_pesquisarproduto);
         txt_pesquisarproduto.setLayout(txt_pesquisarprodutoLayout);
@@ -123,29 +124,22 @@ public class FormVerprod extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                        .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
                             .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
-                            .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pesquisar_vlrproduto)))
+                                .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 73, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_pesquisarprodutoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_pesquisarproduto)
-                .addGap(119, 119, 119))
+                .addGap(94, 94, 94))
+            .addGroup(txt_pesquisarprodutoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         txt_pesquisarprodutoLayout.setVerticalGroup(
             txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,19 +150,11 @@ public class FormVerprod extends javax.swing.JFrame {
                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(pesquisar_produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pesquisar_vlrproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_pesquisarproduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(txt_pesquisarprodutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -196,7 +182,27 @@ public class FormVerprod extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FormMenu fun = new FormMenu();
         fun.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bt_pesquisarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_pesquisarprodutoActionPerformed
+        if (pesquisar_produto.getText().isEmpty()) {
+            preencherTable(new ProdutosDAO().listar());
+        } else {
+            preencherTable(new ProdutosDAO().PesquisarNome(pesquisar_produto.getText()));
+        }
+    }//GEN-LAST:event_bt_pesquisarprodutoActionPerformed
+
+    private void tabela_produtosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_produtosMouseClicked
+        if(evt.getClickCount() == 2){
+            int linha = tabela_produtos.getSelectedRow();
+            String id = tabela_produtos.getValueAt(linha, 0).toString();
+            
+            FormCadastrarprod f = new FormCadastrarprod(id,1);
+            f.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tabela_produtosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -240,13 +246,57 @@ public class FormVerprod extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField pesquisar_produto;
-    private javax.swing.JTextField pesquisar_vlrproduto;
     private javax.swing.JTable tabela_produtos;
     private javax.swing.JPanel txt_pesquisarproduto;
     // End of variables declaration//GEN-END:variables
+
+    private void configurarForm() {
+        this.setTitle("Produtos cadastrados");
+        this.setResizable(false);
+        configurarTable();
+        preencherTable(new ProdutosDAO().listar());
+    }
+
+    private void configurarTable() {
+        DefaultTableModel m = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        
+        m.addColumn("ID");
+        m.addColumn("Nome");
+        m.addColumn("Descrição");
+        m.addColumn("Valor Unitário");
+        m.addColumn("Quantidade");
+        tabela_produtos.setModel(m);
+    }
+    
+    private void preencherTable(List<Produtos> lista){
+        if (lista!=null) {
+            if (lista.size()>0) {
+                configurarTable();
+                DefaultTableModel m2 = (DefaultTableModel)tabela_produtos.getModel();
+                for(Produtos obj: lista){
+                    m2.addRow(new Object[]{
+                        obj.getId(),
+                        obj.getNome(),
+                        obj.getDescricao(),
+                        new DecimalFormat("R$ #,##0.00").format(obj.getPreco()),
+                        obj.getQuantidade()
+                    });
+                }
+                tabela_produtos.setModel(m2);
+            } else {
+                configurarTable();
+                pesquisar_produto.setText("");
+                JOptionPane.showMessageDialog(null, "ERRO:\nNão há nada cadastrado", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "ERRO:\nNão foi possível concluir", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
